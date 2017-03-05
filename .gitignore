@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -37,3 +38,18 @@ jspm_packages
 .node_repl_history
 
 .idea
+=======
+.idea
+node_modules
+jspm_packages
+npm-debug.log
+debug.log
+src/**/*.js
+!src/systemjs.config.extras.js
+!src/systemjs.config.js
+*.js.map
+e2e/**/*.js
+e2e/**/*.js.map
+_test-output
+_temp
+>>>>>>> first commit
