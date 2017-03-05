@@ -45,7 +45,7 @@ export class AppComponent {
 }
 
 const PEOPLE: Person[] = [             //массив HEROES типа Hero
-  { id: '@roman.pavlenko', point: 75 },
+  { id: '@roman.p', point: 75 },
   { id: '@alena', point: 7 },
   { id: '@alexander.adel', point: 60 },
   { id: '@alexander.baglay', point: 139 },
