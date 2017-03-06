@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 export class Person {        //объявили класс Hero и типы переменных
-  id: string;
+  to: string;
   point: number;
 }
 
@@ -45,21 +45,21 @@ export class AppComponent {
 }
 
 const PEOPLE: Person[] = [             //массив HEROES типа Hero
-  { id: '@roman.p', point: 75 },
-  { id: '@alena', point: 7 },
-  { id: '@alexander.adel', point: 60 },
-  { id: '@alexander.baglay', point: 139 },
-  { id: '@olena.barabach', point: 176 },
-  { id: '@andriy.popovich', point: 0 },
-  { id: '@artem.burlaka', point: 115 },
-  { id: '@denys.melnychenko', point: 200 },
-  { id: '@evgene.podolyako', point: 32 },
-  { id: '@dmytro.boyko', point: 23 },
-  { id: '@dmytro.maliyarenko', point: 74 },
-  { id: '@denis.mulyar', point: 103 },
-  { id: '@dmytro.lytvynenko', point: 89 },
-  { id: '@tygay.andrey', point: 0 },
-  { id: '@aleksandra.viedina', point: 24 },
-  { id: '@alexander.vlasov', point: 100 },
-  { id: '@valentin.opanasyuk', point: 72 }
+  { to: '@roman.p', point: 75 },
+  { to: '@alena', point: 7 },
+  { to: '@alexander.a', point: 60 },
+  { to: '@alexander.b', point: 139 },
+  { to: '@olena.b', point: 176 },
+  { to: '@andriy.p', point: 0 },
+  { to: '@artem.b', point: 115 },
+  { to: '@denys.m', point: 200 },
+  { to: '@evgene.p', point: 32 },
+  { to: '@dmytro.b', point: 23 },
+  { to: '@dmytro.m', point: 74 },
+  { to: '@denis.m', point: 103 },
+  { to: '@dmytro.l', point: 89 },
+  { to: '@andrey.t', point: 0 },
+  { to: '@aleksandra.v', point: 24 },
+  { to: '@alexander.v', point: 100 },
+  { to: '@valentin.o', point: 72 }
 ];
