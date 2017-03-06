@@ -18,8 +18,8 @@ export class Person {        //объявили класс Hero и типы пе
      </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let person of people | sortingString:'id' :false ">
-       <td>{{person.id}}</td>
+       <tr *ngFor="let person of people | sortingString:'to' :false ">
+       <td>{{person.to}}</td>
        <td class="col2">{{person.point}}</td>
        </tr>
      </tbody>
