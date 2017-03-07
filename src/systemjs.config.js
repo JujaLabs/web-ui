@@ -13,6 +13,8 @@
       // our app is within the app folder
       app: 'app',
 
+      'lodash': 'npm:lodash',
+
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -33,6 +35,10 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        defaultExtension: 'js'
+      },
+      lodash: {
+        main: 'index.js',
         defaultExtension: 'js'
       }
     }
