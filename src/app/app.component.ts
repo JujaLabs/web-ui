@@ -13,12 +13,12 @@ export class Person {
     <table class="table table-bordered table-hover">
      <thead>
        <tr>
-       <th class="col1">ID</th>
-       <th class="col2">Джуджики</th>
+       <th class="col1" (click)="setKey('to')">ID</th>
+       <th class="col2" (click)="setKey('point')">Джуджики</th>
      </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let person of people | sortingString: 'point'">
+       <tr *ngFor="let person of people | sorting: key ">
        <td>{{person.to}}</td>
        <td class="col2">{{person.point}}</td>
        </tr>
@@ -42,6 +42,15 @@ export class Person {
 export class AppComponent {
   title = 'Table';
   people = PEOPLE;
+  key = '';
+
+  setKey = (th: any) => {
+    if (th === 'to') {
+      this.key = 'to'
+    } else {
+      this.key = 'point'
+    }
+  }
 }
 
 const PEOPLE: Person[] = [
