@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-export class Person {        //объявили класс Hero и типы переменных
+export class Person {
   to: string;
   point: number;
 }
@@ -18,7 +18,7 @@ export class Person {        //объявили класс Hero и типы пе
      </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let person of people | sortingString:'point' :false ">
+       <tr *ngFor="let person of people | sortingString: 'point'">
        <td>{{person.to}}</td>
        <td class="col2">{{person.point}}</td>
        </tr>
@@ -44,7 +44,7 @@ export class AppComponent {
   people = PEOPLE;
 }
 
-const PEOPLE: Person[] = [             //массив HEROES типа Hero
+const PEOPLE: Person[] = [
   { to: '@roman.p', point: 75 },
   { to: '@alena', point: 7 },
   { to: '@alexander.a', point: 60 },
