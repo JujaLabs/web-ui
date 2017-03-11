@@ -18,7 +18,7 @@ export class Person {
      </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let person of people | sorting: key ">
+       <tr *ngFor="let person of people | sorting: key : counter ">
        <td>{{person.to}}</td>
        <td class="col2">{{person.point}}</td>
        </tr>
@@ -43,8 +43,14 @@ export class AppComponent {
   title = 'Table';
   people = PEOPLE;
   key = '';
+  counter = 0;
 
   setKey = (th: any) => {
+    if (this.counter === 2) {
+      this.counter = 0
+    } else {
+      this.counter++;
+    }
     if (th === 'to') {
       this.key = 'to'
     } else {
