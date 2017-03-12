@@ -24,10 +24,33 @@ export class Person {
        </tr>
      </tbody>
     </table>
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   `,
   styles: [`
+    h1, h2 {
+    text-align: center;
+    }
     table {
     width: 300px;
+    margin: auto;
     }
     .col1 {
     width: 200px;
@@ -35,6 +58,9 @@ export class Person {
     }
     .col2 {
     width: 100px;
+    text-align: center;
+    }
+    nav {
     text-align: center;
     }
   `]
@@ -46,16 +72,8 @@ export class AppComponent {
   counter = 0;
 
   setKey = (th: any) => {
-    if (this.counter === 2) {
-      this.counter = 0
-    } else {
-      this.counter++;
-    }
-    if (th === 'to') {
-      this.key = 'to'
-    } else {
-      this.key = 'point'
-    }
+    this.counter === 2 ? this.counter = 0 : this.counter++;
+    th === 'to' ? this.key = 'to' : this.key = 'point';
   }
 }
 
