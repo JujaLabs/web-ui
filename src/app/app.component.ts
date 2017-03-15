@@ -13,44 +13,36 @@ export class Person {
     <table class="table table-bordered table-hover">
      <thead>
        <tr>
-       <th class="col1" (click)="setKey('to')">ID</th>
-       <th class="col2" (click)="setKey('point')">Джуджики</th>
+         <th class="col0"></th>
+         <th class="col1" (click)="setKey('to')">ID</th>
+         <th class="col2" (click)="setKey('point')">Джуджики</th>
      </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let person of people | sorting: key : counter ">
-       <td>{{person.to}}</td>
-       <td class="col2">{{person.point}}</td>
+       <tr *ngFor="let person of people | sorting: key : counter "
+       [class.selected]="person === selectedPeople"
+       (click)="onSelect(person)">
+         <td><input class="check" type="checkbox"></td> 
+         <td>{{person.to}}</td>
+         <td class="col2">{{person.point}}</td>
        </tr>
      </tbody>
     </table>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
   `,
   styles: [`
+    .selected {
+    background-color: #CFD8DC !important;
+    color: white;
+    }
     h1, h2 {
     text-align: center;
     }
     table {
-    width: 300px;
+    width: 340px;
     margin: auto;
+    }
+    .col0 {
+    width: 40px;
     }
     .col1 {
     width: 200px;
@@ -60,8 +52,8 @@ export class Person {
     width: 100px;
     text-align: center;
     }
-    nav {
-    text-align: center;
+    .check {
+    margin: 4px;
     }
   `]
 })
@@ -70,6 +62,11 @@ export class AppComponent {
   people = PEOPLE;
   key = '';
   counter = 0;
+  selectedPeople: Person;
+
+  onSelect(person: Person): void {
+    this.selectedPeople = person
+  }
 
   setKey = (th: any) => {
     this.counter === 2 ? this.counter = 0 : this.counter++;
