@@ -20,9 +20,9 @@ export class Person {
      </thead>
      <tbody>
        <tr *ngFor="let person of people | sorting: key : counter "
-       [class.selected]="person === selectedPeople"
-       (click)="onSelect(person)">
-         <td><input class="check" type="checkbox"></td> 
+       [class.selected]="person === selectedPerson"
+       (click)="onSelect(person)"> 
+         <td><input class="check" type="checkbox"/></td> 
          <td>{{person.to}}</td>
          <td class="col2">{{person.point}}</td>
        </tr>
@@ -62,10 +62,10 @@ export class AppComponent {
   people = PEOPLE;
   key = '';
   counter = 0;
-  selectedPeople: Person;
+  selectedPerson: Person;
 
   onSelect(person: Person): void {
-    this.selectedPeople = person
+    this.selectedPerson = person
   }
 
   setKey = (th: any) => {

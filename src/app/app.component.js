@@ -25,14 +25,14 @@ var AppComponent = (function () {
         };
     }
     AppComponent.prototype.onSelect = function (person) {
-        this.selectedPeople = person;
+        this.selectedPerson = person;
     };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <h1>{{title}}</h1>\n    <h2>People</h2>\n    <table class=\"table table-bordered table-hover\">\n     <thead>\n       <tr>\n         <th class=\"col0\"></th>\n         <th class=\"col1\" (click)=\"setKey('to')\">ID</th>\n         <th class=\"col2\" (click)=\"setKey('point')\">\u0414\u0436\u0443\u0434\u0436\u0438\u043A\u0438</th>\n     </tr>\n     </thead>\n     <tbody>\n       <tr *ngFor=\"let person of people | sorting: key : counter \"\n       [class.selected]=\"person === selectedPeople\"\n       (click)=\"onSelect(person)\">\n         <td><input class=\"check\" type=\"checkbox\"></td> \n         <td>{{person.to}}</td>\n         <td class=\"col2\">{{person.point}}</td>\n       </tr>\n     </tbody>\n    </table>\n  ",
+        template: "\n    <h1>{{title}}</h1>\n    <h2>People</h2>\n    <table class=\"table table-bordered table-hover\">\n     <thead>\n       <tr>\n         <th class=\"col0\"></th>\n         <th class=\"col1\" (click)=\"setKey('to')\">ID</th>\n         <th class=\"col2\" (click)=\"setKey('point')\">\u0414\u0436\u0443\u0434\u0436\u0438\u043A\u0438</th>\n     </tr>\n     </thead>\n     <tbody>\n       <tr *ngFor=\"let person of people | sorting: key : counter \"\n       [class.selected]=\"person === selectedPerson\"\n       (click)=\"onSelect(person)\"> \n         <td><input class=\"check\" type=\"checkbox\"/></td> \n         <td>{{person.to}}</td>\n         <td class=\"col2\">{{person.point}}</td>\n       </tr>\n     </tbody>\n    </table>\n  ",
         styles: ["\n    .selected {\n    background-color: #CFD8DC !important;\n    color: white;\n    }\n    h1, h2 {\n    text-align: center;\n    }\n    table {\n    width: 340px;\n    margin: auto;\n    }\n    .col0 {\n    width: 40px;\n    }\n    .col1 {\n    width: 200px;\n    text-align: center;\n    }\n    .col2 {\n    width: 100px;\n    text-align: center;\n    }\n    .check {\n    margin: 4px;\n    }\n  "]
     })
 ], AppComponent);
