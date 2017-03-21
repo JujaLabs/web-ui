@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 export class Person {
   to: string;
   point: number;
+}
+
+export enum KEY_CODE {
+  UP_ARROW = 38,
+  DOWN_ARROW = 40
 }
 
 @Component({
@@ -13,15 +18,17 @@ export class Person {
     <table class="table table-bordered table-hover">
      <thead>
        <tr>
+         <th>#</th> 
          <th class="col0"></th>
          <th class="col1" (click)="setKey('to')">ID</th>
          <th class="col2" (click)="setKey('point')">Джуджики</th>
      </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let person of people | sorting: key : counter "
+       <tr *ngFor="let person of people | sorting: key : counter; let i = index "
        [class.selected]="person === selectedPerson"
-       (click)="onSelect(person)"> 
+       (click)="onSelect(person, i)"> 
+         <td [id]="i+1">{{i+1}}</td>
          <td><input class="check" type="checkbox"/></td> 
          <td>{{person.to}}</td>
          <td class="col2">{{person.point}}</td>
@@ -63,10 +70,39 @@ export class AppComponent {
   key = '';
   counter = 0;
   selectedPerson: Person;
+  selectedIndex: number;
 
-  onSelect(person: Person): void {
-    this.selectedPerson = person
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+    if (event.keyCode === KEY_CODE.UP_ARROW){
+      this.selectedPerson = this.people[--this.selectedIndex];
+    } else
+      if (event.keyCode === KEY_CODE.DOWN_ARROW) {
+      this.selectedPerson = this.people[++this.selectedIndex];
+    }
   }
+
+  onSelect(person: Person, i: number): void {
+    this.selectedPerson = person;
+    this.selectedIndex = i
+  }
+
+ /* scroll(event: KeyboardEvent) {
+    //up 38 down 40
+    event.preventDefault();
+    if (event.keyCode === 40) {
+      this.selectedPerson = this.people[++this.selectedIndex];
+    } else if (event.keyCode === 38) {
+      this.selectedPerson = this.people[--this.selectedIndex];
+    } else return;
+  }*/
+
+/*  isSelected(person: Person) {
+    return this.selectedPerson ?
+      this.selectedPerson === person : false;
+  }*/
+
 
   setKey = (th: any) => {
     this.counter === 2 ? this.counter = 0 : this.counter++;
