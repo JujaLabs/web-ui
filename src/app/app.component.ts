@@ -1,9 +1,6 @@
-import { Component, HostListener } from '@angular/core';
-
-export class Person {
-  to: string;
-  point: number;
-}
+import {Component, HostListener, OnInit} from '@angular/core';
+import { HttpService} from './http.service';
+import {Person} from './person';
 
 export enum KEY_CODE {
   UP_ARROW = 38,
@@ -28,7 +25,7 @@ export enum KEY_CODE {
        <tr *ngFor="let person of people | sorting: key : counter; let i = index "
        [class.selected]="person === selectedPerson"
        (click)="onSelect(person, i)"> 
-         <td [id]="i+1">{{i+1}}</td>
+         <td>{{i+1}}</td>
          <td><input class="check" type="checkbox"/></td> 
          <td>{{person.to}}</td>
          <td class="col2">{{person.point}}</td>
@@ -62,15 +59,30 @@ export enum KEY_CODE {
     .check {
     margin: 4px;
     }
-  `]
+  `],
+  providers: [HttpService]
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit{
   title = 'Table';
-  people = PEOPLE;
+  people: Person[];
   key = '';
   counter = 0;
   selectedPerson: Person;
   selectedIndex: number;
+
+  constructor(private httpService: HttpService){}
+
+  getData(): void {
+    this.httpService
+      .getData()
+      .then(people => this.people = people);
+    console.log(this.people);
+  }
+
+  ngOnInit(): void {
+    this.getData();
+  }
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -107,10 +119,12 @@ export class AppComponent {
   setKey = (th: any) => {
     this.counter === 2 ? this.counter = 0 : this.counter++;
     th === 'to' ? this.key = 'to' : this.key = 'point';
-  }
+  };
+
+
 }
 
-const PEOPLE: Person[] = [
+/*const PEOPLE: Person[] = [
   { to: '@roman.p', point: 75 },
   { to: '@alena', point: 7 },
   { to: '@alexander.a', point: 60 },
@@ -128,4 +142,4 @@ const PEOPLE: Person[] = [
   { to: '@aleksandra.v', point: 24 },
   { to: '@alexander.v', point: 100 },
   { to: '@valentin.o', point: 72 }
-];
+];*/
