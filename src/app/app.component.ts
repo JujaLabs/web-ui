@@ -1,83 +1,63 @@
-import { Component } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
+import { HttpService} from './http.service';
+import {Person} from './person';
 
-export class Person {
-  to: string;
-  point: number;
+export enum KEY_CODE {
+  UP_ARROW = 38,
+  DOWN_ARROW = 40
 }
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <h2>People</h2>
-    <table class="table table-bordered table-hover">
-     <thead>
-       <tr>
-       <th class="col1" (click)="setKey('to')">ID</th>
-       <th class="col2" (click)="setKey('point')">Джуджики</th>
-     </tr>
-     </thead>
-     <tbody>
-       <tr *ngFor="let person of people | sorting: key : counter ">
-       <td>{{person.to}}</td>
-       <td class="col2">{{person.point}}</td>
-       </tr>
-     </tbody>
-    </table>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  `,
-  styles: [`
-    h1, h2 {
-    text-align: center;
-    }
-    table {
-    width: 300px;
-    margin: auto;
-    }
-    .col1 {
-    width: 200px;
-    text-align: center;
-    }
-    .col2 {
-    width: 100px;
-    text-align: center;
-    }
-    nav {
-    text-align: center;
-    }
-  `]
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'],
+  providers: [HttpService]
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit{
   title = 'Table';
-  people = PEOPLE;
+  people: Person[];
   key = '';
   counter = 0;
+  selectedPerson: Person;
+  selectedIndex: number;
+
+  constructor(private httpService: HttpService){}
+
+  getData(): void {
+    this.httpService
+      .getData()
+      .then(people => this.people = people);
+      console.log(this.people);
+  }
+
+  ngOnInit(): void {
+    this.getData();
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+    if (event.keyCode === KEY_CODE.UP_ARROW){
+      this.selectedPerson = this.people[--this.selectedIndex];
+    } else
+      if (event.keyCode === KEY_CODE.DOWN_ARROW) {
+      this.selectedPerson = this.people[++this.selectedIndex];
+    }
+  }
+
+  onSelect(person: Person, i: number): void {
+    this.selectedPerson = person;
+    this.selectedIndex = i
+  }
 
   setKey = (th: any) => {
     this.counter === 2 ? this.counter = 0 : this.counter++;
     th === 'to' ? this.key = 'to' : this.key = 'point';
-  }
+  };
 }
 
-const PEOPLE: Person[] = [
+/*const PEOPLE: Person[] = [
   { to: '@roman.p', point: 75 },
   { to: '@alena', point: 7 },
   { to: '@alexander.a', point: 60 },
@@ -95,4 +75,4 @@ const PEOPLE: Person[] = [
   { to: '@aleksandra.v', point: 24 },
   { to: '@alexander.v', point: 100 },
   { to: '@valentin.o', point: 72 }
-];
+];*/
