@@ -13,12 +13,10 @@ export class HttpService{
 
   getData(): Promise<Person[]> {
     let options = new RequestOptions({headers: this.headers});
-    let people = this.http.get('http://gamification.juja.com.ua/user/pointSum', options)
+    return this.http.get('http://gamification.juja.com.ua/user/pointSum', options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
-    console.log(people);
-    return people;
   }
 
   private handleError(error: any): Promise<any> {

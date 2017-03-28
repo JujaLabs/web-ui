@@ -9,57 +9,8 @@ export enum KEY_CODE {
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <h2>People</h2>
-    <table class="table table-bordered table-hover">
-     <thead>
-       <tr>
-         <th>#</th> 
-         <th class="col0"></th>
-         <th class="col1" (click)="setKey('to')">ID</th>
-         <th class="col2" (click)="setKey('point')">Джуджики</th>
-     </tr>
-     </thead>
-     <tbody>
-       <tr *ngFor="let person of people | sorting: key : counter; let i = index "
-       [class.selected]="person === selectedPerson"
-       (click)="onSelect(person, i)"> 
-         <td>{{i+1}}</td>
-         <td><input class="check" type="checkbox"/></td> 
-         <td>{{person.to}}</td>
-         <td class="col2">{{person.point}}</td>
-       </tr>
-     </tbody>
-    </table>
-  `,
-  styles: [`
-    .selected {
-    background-color: #CFD8DC !important;
-    color: white;
-    }
-    h1, h2 {
-    text-align: center;
-    }
-    table {
-    width: 340px;
-    margin: auto;
-    }
-    .col0 {
-    width: 40px;
-    }
-    .col1 {
-    width: 200px;
-    text-align: center;
-    }
-    .col2 {
-    width: 100px;
-    text-align: center;
-    }
-    .check {
-    margin: 4px;
-    }
-  `],
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'],
   providers: [HttpService]
 })
 
@@ -77,7 +28,7 @@ export class AppComponent implements OnInit{
     this.httpService
       .getData()
       .then(people => this.people = people);
-    console.log(this.people);
+      console.log(this.people);
   }
 
   ngOnInit(): void {
@@ -100,28 +51,10 @@ export class AppComponent implements OnInit{
     this.selectedIndex = i
   }
 
- /* scroll(event: KeyboardEvent) {
-    //up 38 down 40
-    event.preventDefault();
-    if (event.keyCode === 40) {
-      this.selectedPerson = this.people[++this.selectedIndex];
-    } else if (event.keyCode === 38) {
-      this.selectedPerson = this.people[--this.selectedIndex];
-    } else return;
-  }*/
-
-/*  isSelected(person: Person) {
-    return this.selectedPerson ?
-      this.selectedPerson === person : false;
-  }*/
-
-
   setKey = (th: any) => {
     this.counter === 2 ? this.counter = 0 : this.counter++;
     th === 'to' ? this.key = 'to' : this.key = 'point';
   };
-
-
 }
 
 /*const PEOPLE: Person[] = [
