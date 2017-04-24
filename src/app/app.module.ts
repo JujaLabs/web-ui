@@ -5,7 +5,7 @@ import { SortingPipe }   from './sorting.pipe';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import {HttpService} from "./http.service";
+import {HttpService}     from "./http.service";
 
 @NgModule({
   imports: [
