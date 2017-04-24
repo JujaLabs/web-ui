@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { HttpService} from './http.service';
-import {Person} from './person';
+import { HttpService}                    from './http.service';
+import {Person}                          from './person';
 
 export enum KEY_CODE {
   UP_ARROW = 38,
