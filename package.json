@@ -2,10 +2,11 @@
   "name": "gamification",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "lite": "lite-server",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "prestart": "npm run build",
+    "start": "concurrently \"npm run build:watch\" \"npm run serve\" ",
+    "serve": "lite-server -c=bs-config.json",
+    "build": "tsc -p src/ ",
+    "build:watch": "tsc -p src/ -w"
   },
 
   "dependencies": {
