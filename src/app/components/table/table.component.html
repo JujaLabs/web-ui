@@ -1,5 +1,5 @@
 <h1>{{title}}</h1>
-<h2>People</h2>
+<h2>Users</h2>
 <table class="table table-bordered table-hover">
     <thead>
     <tr>
@@ -10,13 +10,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let person of people | sorting: key : counter; let i = index "
-        [class.selected]="person === selectedPerson"
-        (click)="onSelect(person, i)">
+    <tr *ngFor="let user of users | sorting: key : counter; let i = index "
+        [class.selected]="user === selectedUser"
+        (click)="onSelect(user, i)">
         <td>{{i+1}}</td>
         <td><input class="check" type="checkbox"/></td>
-        <td>{{person.to}}</td>
-        <td class="col2">{{person.point}}</td>
+        <td>{{user.to}}</td>
+        <td class="col2">{{user.point}}</td>
     </tr>
     </tbody>
 </table>

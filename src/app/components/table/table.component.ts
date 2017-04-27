@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { HttpService}                    from '../../service/http.service';
-import {Person}                          from '../../model/person';
+import {User}                          from '../../model/user';
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -16,10 +16,10 @@ export enum KEY_CODE {
 
 export class TableComponent implements OnInit{
     title = 'Table';
-    people: Person[];
+    users: User[];
     key = '';
     counter = 0;
-    selectedPerson: Person;
+    selectedUser: User;
     selectedIndex: number;
 
     constructor(private httpService: HttpService){}
@@ -27,8 +27,8 @@ export class TableComponent implements OnInit{
     getData(): void {
         this.httpService
             .getData()
-            .then(people => this.people = people);
-        console.log(this.people);
+            .then(users => this.users = users);
+        console.log(this.users);
     }
 
     ngOnInit(): void {
@@ -39,15 +39,15 @@ export class TableComponent implements OnInit{
     keyEvent(event: KeyboardEvent) {
         console.log(event);
         if (event.keyCode === KEY_CODE.UP_ARROW){
-            this.selectedPerson = this.people[--this.selectedIndex];
+            this.selectedUser = this.users[--this.selectedIndex];
         } else
         if (event.keyCode === KEY_CODE.DOWN_ARROW) {
-            this.selectedPerson = this.people[++this.selectedIndex];
+            this.selectedUser = this.users[++this.selectedIndex];
         }
     }
 
-    onSelect(person: Person, i: number): void {
-        this.selectedPerson = person;
+    onSelect(user: User, i: number): void {
+        this.selectedUser = user;
         this.selectedIndex = i
     }
 
