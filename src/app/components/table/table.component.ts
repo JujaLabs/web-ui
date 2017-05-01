@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { HttpService}                    from '../../service/http.service';
+import { GamificationService}                    from '../../service/gamification.service';
 import {User}                          from '../../model/user';
 
 export enum KEY_CODE {
@@ -11,28 +11,26 @@ export enum KEY_CODE {
     selector: 'gamification-table',
     templateUrl: 'app/components/table/table.component.html',
     styleUrls: ['app/components/table/table.component.css'],
-    providers: [HttpService]
 })
 
 export class TableComponent implements OnInit{
     title = 'Table';
-    users: User[];
+    users: User[] = [];
     key = '';
     counter = 0;
     selectedUser: User;
     selectedIndex: number;
 
-    constructor(private httpService: HttpService){}
-
-    getData(): void {
-        this.httpService
-            .getData()
-            .then(users => this.users = users);
-        console.log(this.users);
-    }
+    constructor(private gamificationService: GamificationService){}
 
     ngOnInit(): void {
-        this.getData();
+        this.getPointSumForAllUsers();
+    }
+
+    private getPointSumForAllUsers() {
+        this.gamificationService.getPointSumForAllUsers().subscribe(data => {
+            this.users = data;
+        });
     }
 
     @HostListener('window:keyup', ['$event'])
@@ -53,7 +51,7 @@ export class TableComponent implements OnInit{
 
     setKey = (th: any) => {
         this.counter === 2 ? this.counter = 0 : this.counter++;
-        th === 'to' ? this.key = 'to' : this.key = 'point';
+        th === 'uid' ? this.key = 'uid' : this.key = 'point';
     };
 }
 
