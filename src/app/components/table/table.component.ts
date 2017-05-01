@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { HttpService}                    from '../../service/http.service';
-import {User}                          from '../../model/user';
+import {UserActivity}                    from '../../model/userActivity';
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -16,10 +16,10 @@ export enum KEY_CODE {
 
 export class TableComponent implements OnInit{
     title = 'Table';
-    users: User[];
+    users: UserActivity[];
     key = '';
     counter = 0;
-    selectedUser: User;
+    selectedUser: UserActivity;
     selectedIndex: number;
 
     constructor(private httpService: HttpService){}
@@ -46,7 +46,7 @@ export class TableComponent implements OnInit{
         }
     }
 
-    onSelect(user: User, i: number): void {
+    onSelect(user: UserActivity, i: number): void {
         this.selectedUser = user;
         this.selectedIndex = i
     }

@@ -1,6 +1,6 @@
 import {Injectable}                    from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
-import {User}                        from '../model/user';
+import {UserActivity}                  from '../model/userActivity';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
@@ -11,7 +11,7 @@ export class HttpService{
 
   constructor(private http: Http){ }
 
-  getData(): Promise<User[]> {
+  getData(): Promise<UserActivity[]> {
     let options = new RequestOptions({headers: this.headers});
     return this.http.get('http://gamification.juja.com.ua/user/pointSum', options)
       .toPromise()
