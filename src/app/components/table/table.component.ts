@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { GamificationService}                    from '../../service/gamification.service';
-import {User}                          from '../../model/user';
+import {UserActivity}                    from '../../model/userActivity';
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -15,10 +15,10 @@ export enum KEY_CODE {
 
 export class TableComponent implements OnInit{
     title = 'Table';
-    users: User[] = [];
+    users: UserActivity[];
     key = '';
     counter = 0;
-    selectedUser: User;
+    selectedUser: UserActivity;
     selectedIndex: number;
 
     constructor(private gamificationService: GamificationService){}
@@ -44,7 +44,7 @@ export class TableComponent implements OnInit{
         }
     }
 
-    onSelect(user: User, i: number): void {
+    onSelect(user: UserActivity, i: number): void {
         this.selectedUser = user;
         this.selectedIndex = i
     }
@@ -55,22 +55,3 @@ export class TableComponent implements OnInit{
     };
 }
 
-/*const PEOPLE: Person[] = [
- { to: '@roman.p', point: 75 },
- { to: '@alena', point: 7 },
- { to: '@alexander.a', point: 60 },
- { to: '@alexander.b', point: 139 },
- { to: '@olena.b', point: 176 },
- { to: '@andriy.p', point: 0 },
- { to: '@artem.b', point: 115 },
- { to: '@denys.m', point: 200 },
- { to: '@evgene.p', point: 32 },
- { to: '@dmytro.b', point: 23 },
- { to: '@dmytro.m', point: 74 },
- { to: '@denis.m', point: 103 },
- { to: '@dmytro.l', point: 89 },
- { to: '@andrey.t', point: 0 },
- { to: '@aleksandra.v', point: 24 },
- { to: '@alexander.v', point: 100 },
- { to: '@valentin.o', point: 72 }
- ];*/
