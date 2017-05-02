@@ -8725,7 +8725,7 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 						} catch ( e ) {
 							return {
 								state: "parsererror",
-								error: conv ? e : "No conversion from " + prev + " to " + current
+								error: conv ? e : "No conversion from " + prev + " uid " + current
 							};
 						}
 					}

@@ -6,7 +6,7 @@ import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import {TableComponent} from  './components/table/table.component';
-import {HttpService}     from "./service/http.service";
+import {GamificationService}     from "./service/gamification.service";
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import {HttpService}     from "./service/http.service";
     AppComponent
   ],
   providers: [
-    HttpService
+    GamificationService
   ]
 })
 

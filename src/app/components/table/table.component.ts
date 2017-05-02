@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { HttpService}                    from '../../service/http.service';
+import { GamificationService}            from '../../service/gamification.service';
 import {UserActivity}                    from '../../model/userActivity';
 
 export enum KEY_CODE {
@@ -11,7 +11,6 @@ export enum KEY_CODE {
     selector: 'gamification-table',
     templateUrl: 'app/components/table/table.component.html',
     styleUrls: ['app/components/table/table.component.css'],
-    providers: [HttpService]
 })
 
 export class TableComponent implements OnInit{
@@ -22,17 +21,26 @@ export class TableComponent implements OnInit{
     selectedUser: UserActivity;
     selectedIndex: number;
 
-    constructor(private httpService: HttpService){}
-
-    getData(): void {
-        this.httpService
-            .getData()
-            .then(users => this.users = users);
-        console.log(this.users);
-    }
+    constructor(private gamificationService: GamificationService){}
 
     ngOnInit(): void {
-        this.getData();
+        this.getPointSumForAllUsers();
+    }
+
+    private getPointSumForAllUsers() {
+        this.gamificationService.getPointSumForAllUsers().subscribe(data => {
+            this.convertData(data);
+        });
+    }
+
+    private convertData(data: Array<any>) {
+        data.forEach(element => {
+            element.uid = element.to;
+            element.pointSum = element.point;
+            delete element.to;
+            delete element.point;
+        });
+        this.users = data;
     }
 
     @HostListener('window:keyup', ['$event'])
@@ -51,28 +59,9 @@ export class TableComponent implements OnInit{
         this.selectedIndex = i
     }
 
-    setKey = (th: any) => {
+    setKey = (th: string) => {
         this.counter === 2 ? this.counter = 0 : this.counter++;
-        th === 'to' ? this.key = 'to' : this.key = 'point';
+        th === 'uid' ? this.key = 'uid' : this.key = 'pointSum';
     };
 }
 
-/*const PEOPLE: Person[] = [
- { to: '@roman.p', point: 75 },
- { to: '@alena', point: 7 },
- { to: '@alexander.a', point: 60 },
- { to: '@alexander.b', point: 139 },
- { to: '@olena.b', point: 176 },
- { to: '@andriy.p', point: 0 },
- { to: '@artem.b', point: 115 },
- { to: '@denys.m', point: 200 },
- { to: '@evgene.p', point: 32 },
- { to: '@dmytro.b', point: 23 },
- { to: '@dmytro.m', point: 74 },
- { to: '@denis.m', point: 103 },
- { to: '@dmytro.l', point: 89 },
- { to: '@andrey.t', point: 0 },
- { to: '@aleksandra.v', point: 24 },
- { to: '@alexander.v', point: 100 },
- { to: '@valentin.o', point: 72 }
- ];*/
