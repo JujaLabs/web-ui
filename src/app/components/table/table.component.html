@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users | sorting: key : counter; let i = index "
+    <tr *ngFor="let user of userActivity | sorting: key : counter; let i = index "
         [class.selected]="user === selectedUser"
         (click)="onSelect(user, i)">
         <td>{{i+1}}</td>

@@ -15,7 +15,7 @@ export enum KEY_CODE {
 
 export class TableComponent implements OnInit{
     title = 'Table';
-    users: UserActivity[];
+    userActivity: UserActivity[];
     key = '';
     counter = 0;
     selectedUser: UserActivity;
@@ -29,7 +29,7 @@ export class TableComponent implements OnInit{
 
     private getPointSumForAllUsers() {
         this.gamificationService.getPointSumForAllUsers().subscribe(data => {
-            this.users = data;
+            this.userActivity = data;
         });
     }
 
@@ -37,10 +37,10 @@ export class TableComponent implements OnInit{
     keyEvent(event: KeyboardEvent) {
         console.log(event);
         if (event.keyCode === KEY_CODE.UP_ARROW){
-            this.selectedUser = this.users[--this.selectedIndex];
+            this.selectedUser = this.userActivity[--this.selectedIndex];
         } else
         if (event.keyCode === KEY_CODE.DOWN_ARROW) {
-            this.selectedUser = this.users[++this.selectedIndex];
+            this.selectedUser = this.userActivity[++this.selectedIndex];
         }
     }
 
