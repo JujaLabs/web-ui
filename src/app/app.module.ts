@@ -11,6 +11,7 @@ import { InMemoryUserService }  from './service/in-memory-user.service';
 import { AppComponent }  from './app.component';
 import {TableComponent} from  './components/table/table.component';
 import {GamificationService}     from "./service/gamification.service";
+import {UserService}     from "./service/user.service";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {GamificationService}     from "./service/gamification.service";
     AppComponent
   ],
   providers: [
-    GamificationService
+    GamificationService,
+    UserService
   ]
 })
 

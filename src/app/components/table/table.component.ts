@@ -1,6 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { GamificationService}            from '../../service/gamification.service';
 import {UserActivity}                    from '../../model/userActivity';
+import {UserService}                     from "../../service/user.service";
+import {User}                            from "../../model/user";
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -16,20 +18,30 @@ export enum KEY_CODE {
 export class TableComponent implements OnInit{
     title = 'Table';
     userActivity: UserActivity[];
+    users: User[];
     key = '';
     counter = 0;
     selectedUser: UserActivity;
     selectedIndex: number;
 
-    constructor(private gamificationService: GamificationService){}
+    constructor(private gamificationService: GamificationService,
+                private userService: UserService){}
 
     ngOnInit(): void {
         this.getPointSumForAllUsers();
+        this.getAllUsers();
     }
 
     private getPointSumForAllUsers() {
         this.gamificationService.getPointSumForAllUsers().subscribe(data => {
             this.userActivity = data;
+        });
+    }
+
+    private getAllUsers() {
+        this.userService.getAllUsers().subscribe(data => {
+            this.users = data;
+            console.log(this.users);
         });
     }
 
