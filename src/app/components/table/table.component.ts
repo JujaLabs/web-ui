@@ -4,7 +4,7 @@ import {UserActivity}                    from '../../model/userActivity';
 import {UserService}                     from "../../service/user.service";
 import {User}                            from "../../model/user";
 import { Observable }                    from 'rxjs/Observable';
-//import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/forkJoin';
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -31,21 +31,19 @@ export class TableComponent implements OnInit{
 
 
     ngOnInit(): void {
-        this.getPointSumForAllUsers();
-        this.getAllUsers()
-
+        this.getData();
     }
 
-    private getPointSumForAllUsers() {
-        this.gamificationService.getPointSumForAllUsers().subscribe(data => {
-            this.userActivity = data.data;
-        });
-    }
-
-    private getAllUsers() {
-        this.userService.getAllUsers().subscribe(data => {
-            this.users = data.data;
-        });
+    private getData() {
+        Observable.forkJoin(
+            this.gamificationService.getPointSumForAllUsers(),
+            this.userService.getAllUsers()
+        ).subscribe(
+            data => {
+                this.userActivity = data[0];
+                this.users = data[1];
+            }
+        )
     }
 
     @HostListener('window:keyup', ['$event'])
