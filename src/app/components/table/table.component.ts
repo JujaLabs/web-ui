@@ -1,6 +1,10 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { GamificationService}            from '../../service/gamification.service';
 import {UserActivity}                    from '../../model/userActivity';
+import {UserService}                     from "../../service/user.service";
+import {User}                            from "../../model/user";
+import { Observable }                    from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -15,42 +19,41 @@ export enum KEY_CODE {
 
 export class TableComponent implements OnInit{
     title = 'Table';
-    users: UserActivity[];
+    userActivity: UserActivity[] = [];
+    users: User[]= [];
     key = '';
     counter = 0;
     selectedUser: UserActivity;
     selectedIndex: number;
 
-    constructor(private gamificationService: GamificationService){}
+    constructor(private gamificationService: GamificationService,
+                private userService: UserService){}
+
 
     ngOnInit(): void {
-        this.getPointSumForAllUsers();
+        this.getData();
     }
 
-    private getPointSumForAllUsers() {
-        this.gamificationService.getPointSumForAllUsers().subscribe(data => {
-            this.convertData(data);
-        });
-    }
-
-    private convertData(data: Array<any>) {
-        data.forEach(element => {
-            element.uid = element.to;
-            element.pointSum = element.point;
-            delete element.to;
-            delete element.point;
-        });
-        this.users = data;
+    private getData() {
+        Observable.forkJoin(
+            this.gamificationService.getPointSumForAllUsers(),
+            this.userService.getAllUsers()
+        ).subscribe(
+            data => {
+                this.userActivity = data[0];
+                this.users = data[1];
+            }
+        )
     }
 
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
         console.log(event);
         if (event.keyCode === KEY_CODE.UP_ARROW){
-            this.selectedUser = this.users[--this.selectedIndex];
+            this.selectedUser = this.userActivity[--this.selectedIndex];
         } else
         if (event.keyCode === KEY_CODE.DOWN_ARROW) {
-            this.selectedUser = this.users[++this.selectedIndex];
+            this.selectedUser = this.userActivity[++this.selectedIndex];
         }
     }
 
@@ -61,7 +64,6 @@ export class TableComponent implements OnInit{
 
     setKey = (th: string) => {
         this.counter === 2 ? this.counter = 0 : this.counter++;
-        th === 'uid' ? this.key = 'uid' : this.key = 'pointSum';
+        th === 'to' ? this.key = 'to' : this.key = 'point';
     };
 }
-

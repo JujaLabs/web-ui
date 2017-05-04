@@ -8,14 +8,15 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class GamificationService{
 
-  url: string = 'http://gamification.juja.com.ua/user/pointSum';
+  //private url: string = 'http://gamification.juja.com.ua/user/pointSum';
+  private url: string = 'api/userActivity';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http){ }
 
   private extractData(res: Response) {
     let body = res.json();
-    return body || {};
+    return body.data || {};
   }
 
   getPointSumForAllUsers() {

@@ -4,15 +4,23 @@ import { FormsModule }   from '@angular/forms';
 import { SortingPipe }   from './pipes/sorting.pipe';
 import { HttpModule }    from '@angular/http';
 
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MockDataService }  from './service/mock-data.service';
+
 import { AppComponent }  from './app.component';
 import {TableComponent} from  './components/table/table.component';
 import {GamificationService}     from "./service/gamification.service";
+import {UserService}     from "./service/user.service";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    InMemoryWebApiModule.forRoot(MockDataService, {
+      passThruUnknownUrl: true
+    })
   ],
   declarations: [
     AppComponent,
@@ -23,7 +31,8 @@ import {GamificationService}     from "./service/gamification.service";
     AppComponent
   ],
   providers: [
-    GamificationService
+    GamificationService,
+    UserService
   ]
 })
 
