@@ -6,7 +6,7 @@ import { HttpModule }    from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryUserService }  from './service/in-memory-user.service';
+import { MockDataService }  from './service/mock-data.service';
 
 import { AppComponent }  from './app.component';
 import {TableComponent} from  './components/table/table.component';
@@ -18,7 +18,9 @@ import {UserService}     from "./service/user.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryUserService)
+    InMemoryWebApiModule.forRoot(MockDataService, {
+      passThruUnknownUrl: true
+    })
   ],
   declarations: [
     AppComponent,
