@@ -1,11 +1,11 @@
-<h1>{{title}}</h1>
+<!--<h1>{{title}}</h1>
 <h2>Users</h2>
 <table class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>#</th>
         <th class="col0"></th>
-        <th class="col1" (click)="setKey('to')">ID</th>
+        <th class="col1" (click)="setKey('uid')">ID</th>
         <th class="col2" (click)="setKey('point')">Джуджики</th>
     </tr>
     </thead>
@@ -15,8 +15,38 @@
         (click)="onSelect(user, i)">
         <td>{{i+1}}</td>
         <td><input class="check" type="checkbox"/></td>
-        <td>{{user.to}}</td>
+        <td>{{user.uid}}</td>
         <td class="col2">{{user.point}}</td>
     </tr>
     </tbody>
-</table>
+</table>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">{{title}}</h1>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th (click)="setKey('name')">Name</th>
+                    <th>Slack</th>
+                    <th>Skype</th>
+                    <th (click)="setKey('point')">Point</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of allUsers; let i = index"
+                    [class.selected]="user === selectedUser"
+                    (click)="onSelect(user, i)">
+                    <td>{{i+1}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.slack}}</td>
+                    <td>{{user.skype}}</td>
+                    <td>{{user.point}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
