@@ -9,7 +9,9 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MockDataService }  from './service/mock-data.service';
 
 import { AppComponent }  from './app.component';
+import {HeaderComponent} from './components/header/header.component';
 import {TableComponent} from  './components/table/table.component';
+import {UsersComponent} from  './components/users/users.component';
 import {GamificationService}     from "./service/gamification.service";
 import {UserService}     from "./service/user.service";
 
@@ -24,8 +26,10 @@ import {UserService}     from "./service/user.service";
   ],
   declarations: [
     AppComponent,
+    HeaderComponent,
     SortingPipe,
-    TableComponent
+    TableComponent,
+    UsersComponent
   ],
   bootstrap: [
     AppComponent
