@@ -10,8 +10,7 @@ import { MockDataService }  from './service/mock-data.service';
 
 import { AppComponent }  from './app.component';
 import {HeaderComponent} from './components/header/header.component';
-import {TableComponent} from  './components/table/table.component';
-import {UsersComponent} from  './components/users/users.component';
+import {AllUsersTableComponent} from  './components/all-users-table/all-users-table.component';
 import {GamificationService}     from "./service/gamification.service";
 import {UserService}     from "./service/user.service";
 
@@ -28,8 +27,7 @@ import {UserService}     from "./service/user.service";
     AppComponent,
     HeaderComponent,
     SortingPipe,
-    TableComponent,
-    UsersComponent
+    AllUsersTableComponent,
   ],
   bootstrap: [
     AppComponent

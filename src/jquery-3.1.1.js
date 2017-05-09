@@ -4702,10 +4702,10 @@ var wrapMap = {
 	// XHTML parsers do not magically insert elements in the
 	// same way that tag soup parsers do. So we cannot shorten
 	// this by omitting <tbody> or other required elements.
-	thead: [ 1, "<table>", "</table>" ],
-	col: [ 2, "<table><colgroup>", "</colgroup></table>" ],
-	tr: [ 2, "<table><tbody>", "</tbody></table>" ],
-	td: [ 3, "<table><tbody><tr>", "</tr></tbody></table>" ],
+	thead: [ 1, "<all-users-table>", "</all-users-table>" ],
+	col: [ 2, "<all-users-table><colgroup>", "</colgroup></all-users-table>" ],
+	tr: [ 2, "<all-users-table><tbody>", "</tbody></all-users-table>" ],
+	td: [ 3, "<all-users-table><tbody><tr>", "</tr></tbody></all-users-table>" ],
 
 	_default: [ 0, "", "" ]
 };
@@ -6226,8 +6226,8 @@ function addGetHookIf( conditionFn, hookFn ) {
 
 var
 
-	// Swappable if display is none or starts with table
-	// except "table", "table-cell", or "table-caption"
+	// Swappable if display is none or starts with all-users-table
+	// except "all-users-table", "all-users-table-cell", or "all-users-table-caption"
 	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	cssShow = { position: "absolute", visibility: "hidden", display: "block" },

@@ -3,5 +3,6 @@ export class AllUsers {
     name: string;
     skype: string;
     slack: string;
+    to: string;
     point: number
 }
