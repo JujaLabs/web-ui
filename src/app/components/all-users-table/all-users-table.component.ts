@@ -28,7 +28,7 @@ export class AllUsersTableComponent implements OnInit{
     counter = 0;
     selectedUser: UserActivity;
     selectedIndex: number;
-    table: boolean = false;
+    viewTable: boolean = false;
 
     constructor(private gamificationService: GamificationService,
                 private userService: UserService){}
@@ -47,7 +47,6 @@ export class AllUsersTableComponent implements OnInit{
                 this.userActivity = data[0];
                 this.users = data[1];
                 this.compoundData();
-                console.log(this.allUsers);
             }
         );
     }
@@ -68,7 +67,7 @@ export class AllUsersTableComponent implements OnInit{
                 this.allUsers.push(element);
             }
         });
-        this.table = true;
+        this.viewTable = true;
     }
 
     @HostListener('window:keyup', ['$event'])
