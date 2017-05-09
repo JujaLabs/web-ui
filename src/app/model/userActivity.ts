@@ -1,4 +1,4 @@
 export class UserActivity {
-  uid: string;
+  to: string;
   point: number;
 }
