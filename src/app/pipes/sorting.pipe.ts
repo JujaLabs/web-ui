@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import * as _ from "lodash";
+import {AllUsers} from "../model/allUsers";
 
 @Pipe( {
   name: 'sorting'
 } )
 
 export class SortingPipe implements PipeTransform {
-  transform(array: Array<any>, key?: any, counter?: number): Array<any> {
+  transform(array: AllUsers[], key?: any, counter?: number): AllUsers[] {
     if (counter === 1) {
       return _.sortBy(array, key);
     } else if (counter === 2) {
