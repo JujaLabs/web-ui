@@ -14,12 +14,12 @@ export class GamificationService{
 
   constructor(private http: Http){ }
 
-  private extractData(res: Response) {
+  private extractData(res: Response): Array<any> {
     let body = res.json();
     return body.data || {};
   }
 
-  getPointSumForAllUsers() {
+  getPointSumForAllUsers(): Observable<any> {
     let options = new RequestOptions({headers: this.headers});
     return this.http.get(this.url, options).map(this.extractData);
   }
