@@ -1,5 +1,5 @@
 export class AllUsers {
-    uid: string;
+    uuid: string;
     name: string;
     skype: string;
     slack: string;
