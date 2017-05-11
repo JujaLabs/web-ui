@@ -1,4 +1,4 @@
-import {Injectable}                    from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -8,7 +8,8 @@ import 'rxjs/add/observable/throw';
 import {User} from "../model/user";
 
 @Injectable()
-export class UserService{
+export class UserService {
+
 
     //TODO Replace with real url
     private urlAllUsers: string = 'api/users';
@@ -16,10 +17,10 @@ export class UserService{
     private urlNameByUuid: string = 'api/nameByUuid';
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http){ }
+    constructor(private http: Http) { }
 
     private extractData(res: Response): Array<any> {
-        let body = res.json();
+        const body = res.json();
         return body.data || {};
     }
 

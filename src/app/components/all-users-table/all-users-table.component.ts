@@ -16,12 +16,12 @@ export enum KEY_CODE {
 }
 
 @Component({
-    selector: 'all-users-table',
-    templateUrl: 'app/components/all-users-table/all-users-table.component.html',
-    styleUrls: ['app/components/all-users-table/all-users-table.component.css'],
+    selector: 'app-all-users-table',
+    templateUrl: './all-users-table.component.html',
+    styleUrls: ['./all-users-table.component.css'],
 })
 
-export class AllUsersTableComponent implements OnInit{
+export class AllUsersTableComponent implements OnInit {
     title = 'All Users Table';
     userActivity: UserActivity[] = [];
     users: User[]= [];
@@ -30,13 +30,14 @@ export class AllUsersTableComponent implements OnInit{
     counter = 0;
     selectedUser: UserActivity;
     selectedIndex: number;
-    viewTable: boolean = false;
+    viewTable = false;
 
     constructor(
         private gamificationService: GamificationService,
         private userService: UserService,
         private router: Router
     ){}
+
 
     ngOnInit(): void {
         this.getData();
@@ -59,16 +60,16 @@ export class AllUsersTableComponent implements OnInit{
     }
 
     compoundData() {
-        let merged: Array<any> = _(this.users) // start sequence
+        const merged: Array<any> = _(this.users) // start sequence
             .keyBy('uuid') // create a dictionary of the 1st array
             .merge(_.keyBy(this.userActivity, 'to')) // create a dictionary of the 2nd array, and merge it to the 1st
             .values() // turn the combined dictionary to array
             .value();
 
         merged.forEach(element => {
-            if(element.hasOwnProperty('name') && element.hasOwnProperty('point')) {
+            if (element.hasOwnProperty('name') && element.hasOwnProperty('point')) {
                 this.allUsers.push(element);
-            } else if(element.hasOwnProperty('name') && !element.hasOwnProperty('point')) {
+            } else if (element.hasOwnProperty('name') && !element.hasOwnProperty('point')) {
                 element.point = 0;
                 element.to = '';
                 this.allUsers.push(element);
@@ -80,7 +81,7 @@ export class AllUsersTableComponent implements OnInit{
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
         console.log(event);
-        if (event.keyCode === KEY_CODE.UP_ARROW){
+        if (event.keyCode === KEY_CODE.UP_ARROW) {
             this.selectedUser = this.allUsers[--this.selectedIndex];
         } else
         if (event.keyCode === KEY_CODE.DOWN_ARROW) {
@@ -90,13 +91,13 @@ export class AllUsersTableComponent implements OnInit{
 
     onSelect(user: AllUsers, i: number): void {
         this.selectedUser = user;
-        this.selectedIndex = i
+        this.selectedIndex = i;
     }
 
     setKey = (th: string) => {
         this.counter === 2 ? this.counter = 0 : this.counter++;
         th === 'name' ? this.key = 'name' : this.key = 'point';
-    };
+    }
 
     gotoDetail(uuid: string): void {
         this.router.navigate(['/user-details-table', uuid]);

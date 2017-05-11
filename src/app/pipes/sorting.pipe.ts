@@ -1,6 +1,6 @@
-import { Pipe, PipeTransform } from "@angular/core";
-import * as _ from "lodash";
-import {AllUsers} from "../model/allUsers";
+import { Pipe, PipeTransform } from '@angular/core';
+import * as _ from 'lodash';
+import {AllUsers} from '../model/allUsers';
 
 @Pipe( {
   name: 'sorting'

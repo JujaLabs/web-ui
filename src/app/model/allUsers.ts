@@ -4,5 +4,5 @@ export class AllUsers {
     skype: string;
     slack: string;
     to: string;
-    point: number
+    point: number;
 }

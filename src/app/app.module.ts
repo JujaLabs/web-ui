@@ -1,13 +1,16 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { FormsModule }   from '@angular/forms';
 import { SortingPipe }   from './pipes/sorting.pipe';
 import { HttpModule }    from '@angular/http';
 import { AppRoutingModule }   from './app.router';
 
+
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDataService }  from './service/mock-data.service';
+import { MockDataService } from './service/mock-data.service';
+
 
 import { AppComponent }  from './app.component';
 import {HeaderComponent} from './components/header/header.component';
