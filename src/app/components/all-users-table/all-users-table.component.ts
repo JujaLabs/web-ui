@@ -53,7 +53,7 @@ export class AllUsersTableComponent implements OnInit{
 
     compoundData() {
         let merged: Array<any> = _(this.users) // start sequence
-            .keyBy('uid') // create a dictionary of the 1st array
+            .keyBy('uuid') // create a dictionary of the 1st array
             .merge(_.keyBy(this.userActivity, 'to')) // create a dictionary of the 2nd array, and merge it to the 1st
             .values() // turn the combined dictionary to array
             .value();

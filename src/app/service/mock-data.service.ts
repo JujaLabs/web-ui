@@ -12,13 +12,13 @@ export class MockDataService implements InMemoryDbService {
             {to: 'petr', point: 2}
         ];
         let users = [
-            {uid: '', name: 'Mr. Nice', skype: 'nice123', slack: '@nise'},
-            {uid: 'Olya', name: 'Narco', skype: 'narik', slack: '@narcobaron'},
-            {uid: 'bill', name: 'Bombasto', skype: 'businka', slack: '@bomba'},
-            {uid: 'bob', name: 'Celeritas', skype: 'celeritas', slack: '@rita'},
-            {uid: 'john', name: 'Magneta', skype: 'magnit', slack: '@magnetron'},
-            {uid: 'max', name: 'RubberMan', skype: 'man456', slack: '@rumba'},
-            {uid: 'petr', name: 'Dynama', skype: 'dyma789', slack: '@dinamo'}
+            {uuid: '', name: 'Mr. Nice', skype: 'nice123', slack: '@nise'},
+            {uuid: 'Olya', name: 'Narco', skype: 'narik', slack: '@narcobaron'},
+            {uuid: 'bill', name: 'Bombasto', skype: 'businka', slack: '@bomba'},
+            {uuid: 'bob', name: 'Celeritas', skype: 'celeritas', slack: '@rita'},
+            {uuid: 'john', name: 'Magneta', skype: 'magnit', slack: '@magnetron'},
+            {uuid: 'max', name: 'RubberMan', skype: 'man456', slack: '@rumba'},
+            {uuid: 'petr', name: 'Dynama', skype: 'dyma789', slack: '@dinamo'}
         ];
         return {userActivity, users};
     }
