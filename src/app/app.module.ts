@@ -13,6 +13,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {AllUsersTableComponent} from  './components/all-users-table/all-users-table.component';
 import {GamificationService}     from "./service/gamification.service";
 import {UserService}     from "./service/user.service";
+import {UserDetailsTableComponent} from "./components/user-details-table/user-details-table.component";
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {UserService}     from "./service/user.service";
     HeaderComponent,
     SortingPipe,
     AllUsersTableComponent,
+    UserDetailsTableComponent
   ],
   bootstrap: [
     AppComponent
