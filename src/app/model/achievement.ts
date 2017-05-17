@@ -2,7 +2,7 @@ export class Achievement {
     id: string;
     from: string;
     to: string;
-    sendDate: number;
+    sendDate: string;
     point: number;
     description: string;
     type: string
