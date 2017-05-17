@@ -12,19 +12,27 @@ import {UserDetails}                     from "../../model/userDetails";
 export class UserDetailsTableComponent implements OnInit {
     title = 'User Details Table';
     @Input('user')
-    user: User;
-    // userDetails : UserDetails;
-    userDetails : UserDetails = {
-        uuid:"AAA111",
-        achievements:[
-            {id:"12345", from:"bill", to:"bill", sendDate:1234567, point:1, description:"daily report",
-                type:"DAILY"},
-            {id:"23456", from:"john", to:"bill", sendDate:1234567, point:5, description:"codenjoy winner",
-                type:"CODENJOY"}]
-        };
+    // user: User;
+    user = {name:"bill",uuid:"bill"};
+    userDetails : UserDetails;
+    // userDetails : UserDetails = {
+    //     user:"AAA111",
+    //     details:[
+    //         {id:"12345", from:"bill", to:"bill", sendDate:"15-01-2017", point:1, description:"daily report",
+    //             type:"DAILY"},
+    //         {id:"23456", from:"john", to:"bill", sendDate:"15-02-2017" , point:5, description:"codenjoy winner",
+    //             type:"CODENJOY"}]
+    // };
+
 
     constructor(private gamificationService: GamificationService) {}
 
+    getUserDetails() {
+        this.gamificationService.getUserDetails(this.user.uuid)
+            .subscribe(data  => this.userDetails);
+    }
+
     ngOnInit(): void {
+        this.getUserDetails();
     }
 }

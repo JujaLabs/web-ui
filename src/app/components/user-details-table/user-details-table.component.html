@@ -15,8 +15,8 @@
                         <th>Type</th>
                     </tr>
                 </thead>
-                <tbody>
-                <tr *ngFor="let achievement of userDetails.achievements; let i = index">
+                <tbody *ngIf="userDetails">
+                    <tr *ngFor="let achievement of userDetails.details; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{achievement.from}}</td>
                         <td>{{achievement.to}}</td>
