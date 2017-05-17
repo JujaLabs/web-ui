@@ -14,7 +14,6 @@ export class UserDetailsTableComponent implements OnInit {
     @Input('user')
     user: User;
     // userDetails : UserDetails;
-
     userDetails : UserDetails = {
         uuid:"AAA111",
         achievements:[

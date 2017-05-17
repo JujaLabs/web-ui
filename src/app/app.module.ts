@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { SortingPipe }   from './pipes/sorting.pipe';
 import { HttpModule }    from '@angular/http';
+import { RouterModule }   from '@angular/router';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -20,6 +21,21 @@ import {UserDetailsTableComponent} from "./components/user-details-table/user-de
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'all-users-table',
+        component: AllUsersTableComponent
+      },
+      {
+        path: 'user-details-table',
+        component: UserDetailsTableComponent
+      },
+      {
+        path: '',
+        redirectTo: '/all-users-table',
+        pathMatch: 'full'
+      },
+    ]),
     InMemoryWebApiModule.forRoot(MockDataService, {
       passThruUnknownUrl: true
     })
