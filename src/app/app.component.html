@@ -1,3 +1,8 @@
 <app-header></app-header>
-<all-users-table></all-users-table>
-<user-details-table [user] = "user"></user-details-table>
+<!--<all-users-table></all-users-table>-->
+<nav>
+    <a routerLink="/all-users-table">AllUsersTable</a>
+    <a routerLink="/user-details-table">UserDetailsTable</a>
+</nav>
+<router-outlet></router-outlet>
+<!--<user-details-table [user] = "user"></user-details-table>-->
