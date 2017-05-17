@@ -24,6 +24,7 @@ export class UserDetailsTableComponent implements OnInit {
     //             type:"CODENJOY"}]
     // };
 
+
     constructor(private gamificationService: GamificationService) {}
 
     getUserDetails() {
