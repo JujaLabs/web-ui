@@ -27,7 +27,7 @@ import {UserDetailsTableComponent} from "./components/user-details-table/user-de
         component: AllUsersTableComponent
       },
       {
-        path: 'user-details-table',
+        path: 'user-details-table/:uuid',
         component: UserDetailsTableComponent
       },
       {

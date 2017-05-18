@@ -21,7 +21,9 @@
                     <td>{{user.slack}}</td>
                     <td>{{user.skype}}</td>
                     <td>{{user.point}}</td>
-                    <td class="btnDetails"><button class="btn btn-default" >btnDetails</button></td>
+                    <td class="btnDetails">
+                        <button class="btn btn-default" (click)="gotoDetail(user.uuid)">btnDetails</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
