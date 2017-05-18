@@ -16,7 +16,6 @@ export class GamificationService{
   constructor(private http: Http){ }
 
   private extractData(res: Response): Array<any> {
-    console.log(res);
     let body = res.json();
     return body.data || {};
   }
@@ -26,10 +25,10 @@ export class GamificationService{
     return this.http.get(this.url, options).map(this.extractData);
   }
 
-  getUserDetails(uuid: string): Observable<any> {
+  getUserDetails(uuid: string): Observable<UserDetails> {
     let request = "{\"toIds\":[\""+uuid+"\"]}";
     let options = new RequestOptions({headers: this.headers});
-    return this.http.post(this.urlUserDetails, request, options)
-        .map(this.extractData);
+    return (this.http.post(this.urlUserDetails, request, options)
+        .map(res => res.json() || {}));
   }
 }
