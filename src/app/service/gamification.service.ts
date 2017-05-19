@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {UserDetails} from "../model/userDetails";
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class GamificationService{
@@ -22,13 +24,16 @@ export class GamificationService{
 
   getPointSumForAllUsers(): Observable<any> {
     let options = new RequestOptions({headers: this.headers});
-    return this.http.get(this.url, options).map(this.extractData);
+    return this.http.get(this.url, options)
+        .map(this.extractData)
+        .catch((error: any)=> {return Observable.throw(error);});
   }
 
   getUserDetails(uuid: string): Observable<UserDetails> {
     let request = "{\"toIds\":[\""+uuid+"\"]}";
     let options = new RequestOptions({headers: this.headers});
     return (this.http.post(this.urlUserDetails, request, options)
-        .map(res => res.json() || {}));
+        .map(res => res.json() || {}))
+        .catch((error: any)=> {return Observable.throw(error);});
   }
 }

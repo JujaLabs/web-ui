@@ -25,7 +25,11 @@ export class UserDetailsTableComponent implements OnInit {
     getUserDetails(): void {
         this.route.params
             .switchMap((params: Params) => this.gamificationService.getUserDetails(params['uuid']))
-            .subscribe(data  => this.userDetails = data[0]);
+            .subscribe(
+                data  => this.userDetails = data[0],
+                (error: any) => {
+                    console.log(error);
+                });
     }
 
     ngOnInit(): void {
