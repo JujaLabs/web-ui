@@ -4,8 +4,5 @@ import {Component} from '@angular/core';
   selector: 'my-app',
   templateUrl: 'app/app.component.html'
 })
-export class AppComponent{
-//TODO delete
-  user = {name:"bill"};
-}
+export class AppComponent{}
 

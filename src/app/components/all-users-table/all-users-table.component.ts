@@ -47,10 +47,13 @@ export class AllUsersTableComponent implements OnInit{
             this.gamificationService.getPointSumForAllUsers(),
             this.userService.getAllUsers()
         ).subscribe(
-            data => {
+            (data: Array<any>) => {
                 this.userActivity = data[0];
                 this.users = data[1];
                 this.compoundData();
+            },
+            (error: any) => {
+                console.log(error);
             }
         );
     }
