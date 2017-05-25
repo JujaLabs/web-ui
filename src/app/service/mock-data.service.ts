@@ -20,6 +20,10 @@ export class MockDataService implements InMemoryDbService {
             {uuid: 'max', name: 'RubberMan', skype: 'man456', slack: '@rumba'},
             {uuid: 'petr', name: 'Dynama', skype: 'dyma789', slack: '@dinamo'}
         ];
-        return {userActivity, users};
+        let nameByUuid = [
+            {uuid:"bob",name:"Bob"},
+            {uuid:"max",name:"Max"}
+        ];
+        return {userActivity, users, nameByUuid};
     }
 }
