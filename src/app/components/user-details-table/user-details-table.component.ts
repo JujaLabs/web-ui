@@ -50,7 +50,7 @@ export class UserDetailsTableComponent implements OnInit {
 
     getUuids() : string[] {
         let uuids = new Set();
-        if(this.userDetails.details.length != 0) {
+        if(this.userDetails.details.length) {
             uuids.add(this.userDetails.details[0].to);
             this.userDetails.details.forEach(detail => uuids.add(detail.from));
         }
@@ -58,14 +58,14 @@ export class UserDetailsTableComponent implements OnInit {
     }
 
     compoundData(): void {
-        if(this.userDetails.details.length != 0) {
+        if(this.userDetails.details.length) {
             let result: User[];
             result = this.users.filter(item => item.uuid === this.userDetails.details[0].to);
-            result.length != 0 ? (this.user.uuid = result[0].uuid, this.user.name = result[0].name) :
+            result.length ? (this.user.uuid = result[0].uuid, this.user.name = result[0].name) :
                 (this.user.uuid = this.userDetails.details[0].to, this.user.name = this.user.uuid);
             this.userDetails.details.forEach(detail => (
                 result = this.users.filter(item => item.uuid === detail.from),
-                result.length != 0 ? detail.from = result[0].name : detail.from = detail.from
+                result.length ? detail.from = result[0].name : detail.from = detail.from
             ));
             this.viewTable = true;
         }
