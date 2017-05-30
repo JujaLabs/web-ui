@@ -13,7 +13,7 @@ We recommend nvm for managing multiple versions of node and npm.
 
  1. clone this repository
  2. run ``npm install``
- 3. run ``ng serve``
+ 3. run ``npm start``
  4. after check your code ``ng lint`` and fix mistake ``ng lint --fix ``
 
  [Detail wiki  angular-cli](https://github.com/angular/angular-cli/wiki)
