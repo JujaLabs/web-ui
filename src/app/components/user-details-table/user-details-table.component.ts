@@ -11,8 +11,8 @@ import {User} from "../../model/user";
 
 @Component({
     selector: 'user-details-table',
-    templateUrl: 'app/components/user-details-table/user-details-table.component.html',
-    styleUrls: ['app/components/user-details-table/user-details-table.component.css'],
+    templateUrl: './user-details-table.component.html',
+    styleUrls: ['./user-details-table.component.css'],
 })
 
 export class UserDetailsTableComponent implements OnInit {
