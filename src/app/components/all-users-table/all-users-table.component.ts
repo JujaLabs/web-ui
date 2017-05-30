@@ -1,14 +1,14 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { Router }            from '@angular/router';
-import { Observable }                    from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
-import { GamificationService}            from '../../service/gamification.service';
-import {UserActivity}                    from '../../model/userActivity';
-import {UserService}                     from "../../service/user.service";
-import {User}                            from "../../model/user";
-import {AllUsers}                        from "../../model/allUsers";
+import { GamificationService} from '../../service/gamification.service';
+import { UserActivity } from '../../model/userActivity';
+import { UserService } from '../../service/user.service';
+import { User } from '../../model/user';
+import { AllUsers } from '../../model/allUsers';
 
 export enum KEY_CODE {
     UP_ARROW = 38,
@@ -36,7 +36,7 @@ export class AllUsersTableComponent implements OnInit {
         private gamificationService: GamificationService,
         private userService: UserService,
         private router: Router
-    ){}
+    ) {}
 
 
     ngOnInit(): void {

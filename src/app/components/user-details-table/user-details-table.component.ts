@@ -1,26 +1,26 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Location }               from '@angular/common';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
-import {UserService} from "../../service/user.service";
-import {GamificationService}            from '../../service/gamification.service';
+import {UserService} from '../../service/user.service';
+import {GamificationService} from '../../service/gamification.service';
 
-import {UserDetails}                     from "../../model/userDetails";
-import {User} from "../../model/user";
+import {UserDetails} from '../../model/userDetails';
+import {User} from '../../model/user';
 
 @Component({
-    selector: 'user-details-table',
+    selector: 'app-user-details-table',
     templateUrl: './user-details-table.component.html',
     styleUrls: ['./user-details-table.component.css'],
 })
 
 export class UserDetailsTableComponent implements OnInit {
     title = 'User Details Table';
-    user: User = {name:"", uuid:"", skype:"", slack:""};
+    user: User = {name: '', uuid: '', skype: '', slack: ''};
     users: User[];
     userDetails : UserDetails;
-    viewTable: boolean = false;
+    viewTable = false;
 
     constructor(
         private gamificationService: GamificationService,
@@ -44,13 +44,13 @@ export class UserDetailsTableComponent implements OnInit {
                         )
                 ),
                 (error: any) => {
-                    console.log(error);}
+                    console.log(error); }
             );
     }
 
-    getUuids() : string[] {
-        let uuids = new Set();
-        if(this.userDetails.details.length) {
+    getUuids(): string[] {
+        const uuids = new Set();
+        if (this.userDetails.details.length) {
             uuids.add(this.userDetails.details[0].to);
             this.userDetails.details.forEach(detail => uuids.add(detail.from));
         }
@@ -58,7 +58,7 @@ export class UserDetailsTableComponent implements OnInit {
     }
 
     compoundData(): void {
-        if(this.userDetails.details.length) {
+        if (this.userDetails.details.length) {
             let result: User[];
             result = this.users.filter(item => item.uuid === this.userDetails.details[0].to);
             result.length ? (this.user.uuid = result[0].uuid, this.user.name = result[0].name) :
