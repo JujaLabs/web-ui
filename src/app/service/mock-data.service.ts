@@ -2,7 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class MockDataService implements InMemoryDbService {
     createDb() {
-        let userActivity = [
+        const userActivity = [
             {to: '', point: 1},
             {to: 'Olya', point: 1},
             {to: 'bill', point: 2},
@@ -11,7 +11,7 @@ export class MockDataService implements InMemoryDbService {
             {to: 'max', point: 11},
             {to: 'petr', point: 2}
         ];
-        let users = [
+        const users = [
             {uuid: '', name: 'Mr. Nice', skype: 'nice123', slack: '@nise'},
             {uuid: 'Olya', name: 'Narco', skype: 'narik', slack: '@narcobaron'},
             {uuid: 'bill', name: 'Bombasto', skype: 'businka', slack: '@bomba'},
@@ -20,9 +20,9 @@ export class MockDataService implements InMemoryDbService {
             {uuid: 'max', name: 'RubberMan', skype: 'man456', slack: '@rumba'},
             {uuid: 'petr', name: 'Dynama', skype: 'dyma789', slack: '@dinamo'}
         ];
-        let nameByUuid = [
-            {uuid:"bob",name:"Bob"},
-            {uuid:"max",name:"Max"}
+        const nameByUuid = [
+            {uuid: 'bob', name: 'Bob'},
+            {uuid: 'max', name: 'Max'}
         ];
         return {userActivity, users, nameByUuid};
     }

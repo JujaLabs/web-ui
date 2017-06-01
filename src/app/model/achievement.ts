@@ -5,5 +5,5 @@ export class Achievement {
     sendDate: string;
     point: number;
     description: string;
-    type: string
+    type: string;
 }
