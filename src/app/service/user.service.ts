@@ -31,7 +31,7 @@ export class UserService {
             .catch((error: any) => {return Observable.throw(error); });
     }
 
-    getNameByUuid(uuids: string[]): Observable<User[]> {
+    getNameByUuid(uuids: Array<string>): Observable<User[]> {
         const options = new RequestOptions({headers: this.headers});
         // TODO Replace for real user-microservice
         // let request = "{\"toIds\":[";

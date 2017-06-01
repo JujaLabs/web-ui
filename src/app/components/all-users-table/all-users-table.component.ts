@@ -22,15 +22,15 @@ export enum KEY_CODE {
 })
 
 export class AllUsersTableComponent implements OnInit {
-    title = 'All Users Table';
-    userActivity: UserActivity[] = [];
-    users: User[]= [];
-    allUsers: AllUsers[] = [];
-    key = '';
-    counter = 0;
+    title: string;
+    userActivity: UserActivity[];
+    users: User[];
+    allUsers: AllUsers[];
+    key: string;
+    counter: number;
     selectedUser: UserActivity;
     selectedIndex: number;
-    viewTable = false;
+    viewTable: boolean;
 
     constructor(
         private gamificationService: GamificationService,
@@ -40,10 +40,17 @@ export class AllUsersTableComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.title = 'All Users Table';
+        this.userActivity = [];
+        this.users = [];
+        this.allUsers = [];
+        this.key = '';
+        this.counter = 0;
+        this.viewTable = false;
         this.getData();
     }
 
-    private getData() {
+    private getData(): void {
         Observable.forkJoin(
             this.gamificationService.getPointSumForAllUsers(),
             this.userService.getAllUsers()
@@ -59,7 +66,7 @@ export class AllUsersTableComponent implements OnInit {
         );
     }
 
-    compoundData() {
+    compoundData(): void {
         const merged: Array<any> = _(this.users) // start sequence
             .keyBy('uuid') // create a dictionary of the 1st array
             .merge(_.keyBy(this.userActivity, 'to')) // create a dictionary of the 2nd array, and merge it to the 1st
@@ -79,8 +86,7 @@ export class AllUsersTableComponent implements OnInit {
     }
 
     @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-        console.log(event);
+    keyEvent(event: KeyboardEvent): void {
         if (event.keyCode === KEY_CODE.UP_ARROW) {
             this.selectedUser = this.allUsers[--this.selectedIndex];
         } else
@@ -94,9 +100,9 @@ export class AllUsersTableComponent implements OnInit {
         this.selectedIndex = i;
     }
 
-    setKey = (th: string) => {
+    setKey(tableHeader: string): void {
         this.counter === 2 ? this.counter = 0 : this.counter++;
-        th === 'name' ? this.key = 'name' : this.key = 'point';
+        tableHeader === 'name' ? this.key = 'name' : this.key = 'point';
     }
 
     gotoDetail(uuid: string): void {
