@@ -7,7 +7,7 @@ import {AllUsers} from '../model/allUsers';
 } )
 
 export class SortingPipe implements PipeTransform {
-  transform(array: AllUsers[], key?: any, counter?: number): AllUsers[] {
+  transform(array: AllUsers[], key?: string, counter?: number): AllUsers[] {
     if (counter === 1) {
       return _.sortBy(array, key);
     } else if (counter === 2) {

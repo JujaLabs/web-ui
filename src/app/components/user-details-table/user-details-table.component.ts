@@ -16,11 +16,11 @@ import {User} from '../../model/user';
 })
 
 export class UserDetailsTableComponent implements OnInit {
-    title = 'User Details Table';
-    user: User = {name: '', uuid: '', skype: '', slack: ''};
+    title: string;
+    user: User;
     users: User[];
-    userDetails : UserDetails;
-    viewTable = false;
+    userDetails: UserDetails;
+    viewTable: boolean;
 
     constructor(
         private gamificationService: GamificationService,
@@ -29,26 +29,42 @@ export class UserDetailsTableComponent implements OnInit {
         private location: Location
     ) {}
 
-    getUserDetails(): void {
-        this.route.params
-            .switchMap((params: Params) => this.gamificationService.getUserDetails(params['uuid']))
-            .subscribe(
-                data  => (
-                    this.userDetails = data[0],
-                    this.userService.getNameByUuid(this.getUuids())
-                        .subscribe(
-                            data => (
-                                this.users = data,
-                                this.compoundData()
-                            )
-                        )
-                ),
-                (error: any) => {
-                    console.log(error); }
-            );
+    ngOnInit(): void {
+        this.title = 'User Details Table';
+        this.user = {name: '', uuid: '', skype: '', slack: ''};
+        this.userDetails = {user: '', details: []};
+        this.viewTable = false;
+        this.getUserDetails();
     }
 
-    getUuids(): string[] {
+    getUserDetails(): void {
+        this.route.params
+          .switchMap((params: Params) => this.gamificationService.getUserDetails(params['uuid']))
+          .subscribe(
+            (userDetails: any) => (
+                this.userDetails = userDetails[0],
+                this.getNameByUuid()
+              ),
+              (error: any) => {
+                console.log(error);
+              }
+          );
+    }
+
+    getNameByUuid(): void {
+        this.userService.getNameByUuid(this.getUuids())
+          .subscribe(
+            (users: Array<any>) => (
+              this.users = users,
+              this.compoundData()
+            ),
+            (error: any) => {
+              console.log(error);
+            }
+          );
+    }
+
+    getUuids(): Array<string> {
         const uuids = new Set();
         if (this.userDetails.details.length) {
             uuids.add(this.userDetails.details[0].to);
@@ -58,24 +74,25 @@ export class UserDetailsTableComponent implements OnInit {
     }
 
     compoundData(): void {
-        if (this.userDetails.details.length) {
-            let result: User[];
-            result = this.users.filter(item => item.uuid === this.userDetails.details[0].to);
-            result.length ? (this.user.uuid = result[0].uuid, this.user.name = result[0].name) :
-                (this.user.uuid = this.userDetails.details[0].to, this.user.name = this.user.uuid);
-            this.userDetails.details.forEach(detail => (
-                result = this.users.filter(item => item.uuid === detail.from),
-                result.length ? detail.from = result[0].name : detail.from = detail.from
-            ));
-            this.viewTable = true;
-        }
-    }
-
-    ngOnInit(): void {
-        this.getUserDetails();
+        let result: User[];
+            if (this.userDetails.details.length) {
+                result = this.users.filter(item => item.uuid === this.userDetails.details[0].to);
+                if (result.length) {
+                    this.user.uuid = result[0].uuid;
+                    this.user.name = result[0].name;
+                }else {
+                    this.user.uuid = this.userDetails.details[0].to;
+                    this.user.name = this.user.uuid;
+                }
+                this.userDetails.details.forEach(detail => (
+                    result = this.users.filter(item => item.uuid === detail.from),
+                    result.length ? detail.from = result[0].name : detail.from = detail.from
+                ));
+                this.viewTable = true;
+            }
     }
 
     goBack(): void {
-        this.location.back();
+      this.location.back();
     }
 }
