@@ -12,7 +12,7 @@
                     <th (click)="setKey('point')">Point</th>
                 </tr>
                 </thead>
-                <tbody  *ngIf="viewTable == true">
+                <tbody  *ngIf="isViewTable == true">
                 <tr *ngFor="let user of allUsers | sorting: key : counter; let i = index"
                     [class.selected]="user === selectedUser"
                     (click)="onSelect(user, i)">

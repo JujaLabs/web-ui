@@ -11,8 +11,10 @@ import 'rxjs/add/observable/throw';
 export class GamificationService {
 
   // private url: string = 'http://gamification.juja.com.ua/user/pointSum';
-  private url = 'api/userActivity';
-  private urlUserDetails = 'http://gamification.juja.com.ua/user/achieveDetails';
+  // private url = 'api/userActivity';
+  // private urlUserDetails = 'http://gamification.juja.com.ua/user/achieveDetails';
+  private url = '/api/gamification/user/pointSum';
+  private urlUserDetails = '/api/gamification/user/achieveDetails';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 

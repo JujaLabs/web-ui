@@ -20,7 +20,7 @@ export class UserDetailsTableComponent implements OnInit {
     user: User;
     users: User[];
     userDetails: UserDetails;
-    viewTable: boolean;
+    isViewTable: boolean;
 
     constructor(
         private gamificationService: GamificationService,
@@ -33,7 +33,7 @@ export class UserDetailsTableComponent implements OnInit {
         this.title = 'User Details Table';
         this.user = {name: '', uuid: '', skype: '', slack: ''};
         this.userDetails = {user: '', details: []};
-        this.viewTable = false;
+        this.isViewTable = false;
         this.getUserDetails();
     }
 
@@ -41,23 +41,23 @@ export class UserDetailsTableComponent implements OnInit {
         this.route.params
           .switchMap((params: Params) => this.gamificationService.getUserDetails(params['uuid']))
           .subscribe(
-            (userDetails: any) => (
-                this.userDetails = userDetails[0],
-                this.getNameByUuid()
-              ),
-              (error: any) => {
-                console.log(error);
-              }
+            (userDetails: any) => {
+              this.userDetails = userDetails[0];
+              this.getNameByUuid();
+            },
+            (error: any) => {
+              console.log(error);
+            }
           );
     }
 
     getNameByUuid(): void {
         this.userService.getNameByUuid(this.getUuids())
           .subscribe(
-            (users: Array<any>) => (
-              this.users = users,
-              this.compoundData()
-            ),
+            (users: Array<any>) => {
+              this.users = users;
+              this.compoundData();
+            },
             (error: any) => {
               console.log(error);
             }
@@ -84,11 +84,11 @@ export class UserDetailsTableComponent implements OnInit {
                     this.user.uuid = this.userDetails.details[0].to;
                     this.user.name = this.user.uuid;
                 }
-                this.userDetails.details.forEach(detail => (
-                    result = this.users.filter(item => item.uuid === detail.from),
-                    result.length ? detail.from = result[0].name : detail.from = detail.from
-                ));
-                this.viewTable = true;
+                this.userDetails.details.forEach(detail => {
+                  result = this.users.filter(item => item.uuid === detail.from);
+                    result.length ? detail.from = result[0].name : detail.from = detail.from;
+                });
+                this.isViewTable = true;
             }
     }
 
