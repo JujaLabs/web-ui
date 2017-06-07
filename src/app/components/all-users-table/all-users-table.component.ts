@@ -51,10 +51,10 @@ export class AllUsersTableComponent implements OnInit {
     }
 
     private getData(): void {
-        Observable.forkJoin(
-            this.gamificationService.getPointSumForAllUsers(),
-            this.userService.getAllUsers()
-        ).subscribe(
+        const pointSumForAllUsers = this.gamificationService.getPointSumForAllUsers();
+        const allUsers = this.userService.getAllUsers();
+        Observable.forkJoin([pointSumForAllUsers, allUsers])
+          .subscribe(
             (data: Array<any>) => {
                 this.userActivity = data[0];
                 this.users = data[1];

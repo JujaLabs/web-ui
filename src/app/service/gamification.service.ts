@@ -13,8 +13,8 @@ export class GamificationService {
   // private url: string = 'http://gamification.juja.com.ua/user/pointSum';
   // private url = 'api/userActivity';
   // private urlUserDetails = 'http://gamification.juja.com.ua/user/achieveDetails';
-  private url = '/api/gamification/user/pointSum';
-  private urlUserDetails = '/api/gamification/user/achieveDetails';
+  private url = 'http://progress.juja.com.ua/api/gamification/user/pointSum';
+  private urlUserDetails = 'http://progress.juja.com.ua/api/gamification/user/achieveDetails';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -22,7 +22,12 @@ export class GamificationService {
 
   private extractData(res: Response): Array<any> {
     const body = res.json();
-    return body.data || {};
+    return body || {};
+  }
+  private extractData2(res: Response): Array<any> {
+    const body = res.json();
+    console.log(body);
+    return body || {};
   }
 
   getPointSumForAllUsers(): Observable<any> {
@@ -36,7 +41,7 @@ export class GamificationService {
     const request = '{\"toIds\":[\"' + uuid + '\"]}';
     const options = new RequestOptions({headers: this.headers});
     return (this.http.post(this.urlUserDetails, request, options)
-        .map(res => res.json() || {}))
-        .catch((error: any) => {return Observable.throw(error); });
+        .map(this.extractData2)
+        .catch((error: any) => {return Observable.throw(error); }));
   }
 }

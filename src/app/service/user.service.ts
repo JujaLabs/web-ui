@@ -11,17 +11,17 @@ import {User} from '../model/user';
 export class UserService {
 
     // private urlAllUsers = 'api/users';
-    private urlAllUsers = '/api/users/users';
+    private urlAllUsers = 'http://progress.juja.com.ua/api/users/users';
     // /users/nameByUuid"
     // private urlNameByUuid = 'api/nameByUuid';
-    private urlNameByUuid = '/api/users/nameByUuid';
+    private urlNameByUuid = 'http://progress.juja.com.ua/api/users/nameByUuid';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
 
     private extractData(res: Response): Array<any> {
         const body = res.json();
-        return body.data || {};
+        return body || {};
     }
 
     getAllUsers(): Observable<any> {
