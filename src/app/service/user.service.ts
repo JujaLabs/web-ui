@@ -24,11 +24,6 @@ export class UserService {
         return body || {};
     }
 
-  private extractData2(res: Response): Array<any> {
-    const body = res.json();
-    console.log(body);
-    return body || {};
-  }
     getAllUsers(): Observable<any> {
         const options = new RequestOptions({headers: this.headers});
         return this.http.get(this.urlAllUsers, options)
@@ -44,10 +39,9 @@ export class UserService {
             request = request + '"' + uuid + '",'
         ));
         request = (request + ']}').replace(',]', ']');
-        console.log(request);
         return this.http.post(this.urlNameByUuid, request, options)
         // return this.http.get(this.urlNameByUuid, options)
-            .map(this.extractData2)
+            .map(this.extractData)
             .catch((error: any) => {return Observable.throw(error); });
     }
 }

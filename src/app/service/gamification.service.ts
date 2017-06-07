@@ -24,11 +24,6 @@ export class GamificationService {
     const body = res.json();
     return body || {};
   }
-  private extractData2(res: Response): Array<any> {
-    const body = res.json();
-    console.log(body);
-    return body || {};
-  }
 
   getPointSumForAllUsers(): Observable<any> {
     const options = new RequestOptions({headers: this.headers});
@@ -41,7 +36,7 @@ export class GamificationService {
     const request = '{\"toIds\":[\"' + uuid + '\"]}';
     const options = new RequestOptions({headers: this.headers});
     return (this.http.post(this.urlUserDetails, request, options)
-        .map(this.extractData2)
+        .map(this.extractData)
         .catch((error: any) => {return Observable.throw(error); }));
   }
 }

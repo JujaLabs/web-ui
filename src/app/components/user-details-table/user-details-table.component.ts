@@ -42,7 +42,6 @@ export class UserDetailsTableComponent implements OnInit {
           .switchMap((params: Params) => this.gamificationService.getUserDetails(params['uuid']))
           .subscribe(
             (userDetails: any) => {
-              console.log(userDetails);
               this.userDetails = userDetails[0];
               this.getNameByUuid();
             },
@@ -56,7 +55,6 @@ export class UserDetailsTableComponent implements OnInit {
         this.userService.getNameByUuid(this.getUuids())
           .subscribe(
             (users: Array<any>) => {
-              console.log(users);
               this.users = users;
               this.compoundData();
             },
@@ -69,12 +67,9 @@ export class UserDetailsTableComponent implements OnInit {
     getUuids(): Set<string> {
       const uuids = new Set();
       if (this.userDetails.details.length) {
-        console.log(this.userDetails);
         uuids.add(this.userDetails.details[0].to.toString());
-        console.log(uuids);
         this.userDetails.details.forEach(detail => uuids.add(detail.from.toString()));
       }
-      console.log(uuids);
       return uuids;
     }
 
