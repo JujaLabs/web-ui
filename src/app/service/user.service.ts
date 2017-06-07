@@ -14,7 +14,7 @@ export class UserService {
     private urlAllUsers = '/api/users/users';
     // /users/nameByUuid"
     // private urlNameByUuid = 'api/nameByUuid';
-    private urlNameByUuid = '/api/users/nameByUuid';
+    private urlNameByUuid = '/api/users/users/nameByUuid';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
@@ -39,7 +39,7 @@ export class UserService {
     getNameByUuid(uuids: Set<string>): Observable<User[]> {
         const options = new RequestOptions({headers: this.headers});
         // TODO Replace for real user-microservice
-        let request = '{"toIds":[';
+        let request = '{"uuid":[';
         uuids.forEach(uuid => (
             request = request + '"' + uuid + '",'
         ));
