@@ -66,16 +66,16 @@ export class UserDetailsTableComponent implements OnInit {
           );
     }
 
-    getUuids(): Array<string> {
-        const uuids = new Set();
-        if (this.userDetails.details.length) {
-          console.log(this.userDetails);
-            uuids.add(this.userDetails.details[0].to);
-            console.log(uuids);
-            this.userDetails.details.forEach(detail => uuids.add(detail.from));
-        }
+    getUuids(): Set<string> {
+      const uuids = new Set();
+      if (this.userDetails.details.length) {
+        console.log(this.userDetails);
+        uuids.add(this.userDetails.details[0].to.toString());
         console.log(uuids);
-        return Array.from(uuids);
+        this.userDetails.details.forEach(detail => uuids.add(detail.from.toString()));
+      }
+      console.log(uuids);
+      return uuids;
     }
 
     compoundData(): void {
