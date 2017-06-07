@@ -9,11 +9,7 @@ import {User} from '../model/user';
 
 @Injectable()
 export class UserService {
-
-    // private urlAllUsers = 'api/users';
     private urlAllUsers = '/api/users/users';
-    // /users/nameByUuid"
-    // private urlNameByUuid = 'api/nameByUuid';
     private urlNameByUuid = '/api/users/users/nameByUuid';
     private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -33,14 +29,12 @@ export class UserService {
 
     getNameByUuid(uuids: Set<string>): Observable<User[]> {
         const options = new RequestOptions({headers: this.headers});
-        // TODO Replace for real user-microservice
         let request = '{"uuid":[';
         uuids.forEach(uuid => (
             request = request + '"' + uuid + '",'
         ));
         request = (request + ']}').replace(',]', ']');
         return this.http.post(this.urlNameByUuid, request, options)
-        // return this.http.get(this.urlNameByUuid, options)
             .map(this.extractData)
             .catch((error: any) => {return Observable.throw(error); });
     }
