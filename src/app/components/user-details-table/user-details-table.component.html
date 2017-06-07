@@ -15,7 +15,7 @@
                         <th>Type</th>
                     </tr>
                 </thead>
-                <tbody *ngIf="viewTable == true">
+                <tbody *ngIf="isViewTable == true">
                     <tr *ngFor="let achievement of userDetails.details; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{achievement.from}}</td>

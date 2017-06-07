@@ -30,13 +30,13 @@ export class AllUsersTableComponent implements OnInit {
     counter: number;
     selectedUser: UserActivity;
     selectedIndex: number;
-    viewTable: boolean;
+    isViewTable: boolean;
 
     constructor(
         private gamificationService: GamificationService,
         private userService: UserService,
         private router: Router
-    ) {}
+    ) { }
 
 
     ngOnInit(): void {
@@ -46,15 +46,15 @@ export class AllUsersTableComponent implements OnInit {
         this.allUsers = [];
         this.key = '';
         this.counter = 0;
-        this.viewTable = false;
+        this.isViewTable = false;
         this.getData();
     }
 
     private getData(): void {
-        Observable.forkJoin(
-            this.gamificationService.getPointSumForAllUsers(),
-            this.userService.getAllUsers()
-        ).subscribe(
+        const pointSumForAllUsers = this.gamificationService.getPointSumForAllUsers();
+        const allUsers = this.userService.getAllUsers();
+        Observable.forkJoin([pointSumForAllUsers, allUsers])
+          .subscribe(
             (data: Array<any>) => {
                 this.userActivity = data[0];
                 this.users = data[1];
@@ -82,7 +82,7 @@ export class AllUsersTableComponent implements OnInit {
                 this.allUsers.push(element);
             }
         });
-        this.viewTable = true;
+        this.isViewTable = true;
     }
 
     @HostListener('window:keyup', ['$event'])
