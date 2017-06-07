@@ -22,7 +22,7 @@
                     <td>{{user.skype}}</td>
                     <td>{{user.point}}</td>
                     <td class="btnDetails">
-                        <button class="btn btn-default" (click)="gotoDetail(user.uuid)">btnDetails</button>
+                        <button class="btn btn-default" (click)="gotoDetail(user.uuid)" [disabled]="user.point === 0">btnDetails</button>
                     </td>
                 </tr>
                 </tbody>
