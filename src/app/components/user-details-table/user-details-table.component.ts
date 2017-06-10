@@ -21,6 +21,7 @@ export class UserDetailsTableComponent implements OnInit {
     users: User[];
     userDetails: UserDetails;
     isViewTable: boolean;
+    pointSum: number;
 
     constructor(
         private gamificationService: GamificationService,
@@ -34,6 +35,7 @@ export class UserDetailsTableComponent implements OnInit {
         this.user = {name: '', uuid: '', skype: '', slack: ''};
         this.userDetails = {user: '', details: []};
         this.isViewTable = false;
+        this.pointSum = 0;
         this.getUserDetails();
     }
 
@@ -43,6 +45,7 @@ export class UserDetailsTableComponent implements OnInit {
           .subscribe(
             (userDetails: any) => {
               this.userDetails = userDetails[0];
+              this.getPointSum();
               this.getNameByUuid();
             },
             (error: any) => {
@@ -94,5 +97,8 @@ export class UserDetailsTableComponent implements OnInit {
 
     goBack(): void {
       this.location.back();
+    }
+    getPointSum(): void {
+      this.userDetails.details.forEach(detail => this.pointSum += detail.point);
     }
 }
