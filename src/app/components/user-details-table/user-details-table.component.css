@@ -1,3 +1,7 @@
 table {
   background-color: white;
 }
+span {
+  font-size: medium;
+  margin-left: 30px;
+}
