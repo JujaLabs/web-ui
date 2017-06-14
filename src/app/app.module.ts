@@ -18,6 +18,8 @@ import {AllUsersTableComponent} from './components/all-users-table/all-users-tab
 import {GamificationService} from './service/gamification.service';
 import {UserService} from './service/user.service';
 import {UserDetailsTableComponent} from './components/user-details-table/user-details-table.component';
+import { ScrollDirective } from './directives/scroll.directive';
+import { GoTopComponent } from './components/go-to-top/go-to-top.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import {UserDetailsTableComponent} from './components/user-details-table/user-de
     HeaderComponent,
     SortingPipe,
     AllUsersTableComponent,
-    UserDetailsTableComponent
+    UserDetailsTableComponent,
+    ScrollDirective,
+    GoTopComponent
   ],
   bootstrap: [
     AppComponent
