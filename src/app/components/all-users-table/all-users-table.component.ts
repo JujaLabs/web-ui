@@ -108,4 +108,58 @@ export class AllUsersTableComponent implements OnInit {
     gotoDetail(uuid: string): void {
         this.router.navigate(['/user-details-table', uuid]);
     }
+    setBackgroundColor(point: number): string {
+      if (point >= 0 && point < 19) {
+        return '#FFDAB9';
+      } else if (point >= 20 && point < 30) {
+        return '#F4A460';
+      } else if (point >= 30 && point < 60) {
+        return '#90EE90';
+      } else if (point >= 60 && point < 90) {
+        return '#ADD8E6';
+      } else if (point >= 90 && point < 120) {
+        return '#1E90FF';
+      } else if (point >= 120 && point < 150) {
+        return '#BC8F8F';
+      } else if (point >= 150 && point < 180) {
+        return '#8B008B';
+      } else if (point >= 180 && point < 210) {
+        return '#FFFF00';
+      } else if (point >= 210 && point < 240) {
+        return '#FFA500';
+      } else if (point >= 240 && point < 270) {
+        return '#FF0000';
+      } else if (point >= 270 && point < 300) {
+        return '#00FF00';
+      } else if (point >= 300 && point < 330) {
+        return '#00FFFF';
+      } else if (point >= 330 && point < 360) {
+        return '#0000FF';
+      } else if (point >= 360 && point < 390) {
+        return '#9932CC';
+      } else if (point >= 390 && point < 420) {
+        return '#000000';
+      } else if (point >= 420) {
+        return '#000000';
+      }
+    }
+    setColor(point: number): string {
+      if (point >= 0 && point < 90) {
+        return '#000000';
+      } else if (point >= 90 && point < 180) {
+        return '#FFFFFF';
+      } else if (point >= 180 && point < 240) {
+        return '#000000';
+      } else if (point >= 240 && point < 270) {
+        return '#FFFF00';
+      } else if (point >= 270 && point < 330) {
+        return '#000000';
+      } else if (point >= 330 && point < 390) {
+        return '#F4A460';
+      } else if (point >= 390 && point < 420) {
+        return '#FF0000';
+      } else if (point >= 420) {
+        return '#FFA500';
+      }
+    }
 }
