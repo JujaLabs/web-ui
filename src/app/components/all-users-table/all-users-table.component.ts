@@ -102,7 +102,7 @@ export class AllUsersTableComponent implements OnInit {
 
     setKey(tableHeader: string): void {
         this.counter === 2 ? this.counter = 0 : this.counter++;
-        tableHeader === 'name' ? this.key = 'name' : this.key = 'point';
+        this.key = tableHeader;
     }
 
     gotoDetail(uuid: string): void {
