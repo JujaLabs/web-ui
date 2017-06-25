@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
@@ -9,11 +9,6 @@ import { UserActivity } from '../../model/userActivity';
 import { UserService } from '../../service/user.service';
 import { User } from '../../model/user';
 import { AllUsers } from '../../model/allUsers';
-
-export enum KEY_CODE {
-    UP_ARROW = 38,
-    DOWN_ARROW = 40
-}
 
 @Component({
     selector: 'app-all-users-table',
@@ -28,8 +23,6 @@ export class AllUsersTableComponent implements OnInit {
     allUsers: AllUsers[];
     key: string;
     counter: number;
-    selectedUser: UserActivity;
-    selectedIndex: number;
     isViewTable: boolean;
 
     constructor(
@@ -84,21 +77,6 @@ export class AllUsersTableComponent implements OnInit {
         });
         this.isViewTable = true;
     }
-
-/*    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent): void {
-        if (event.keyCode === KEY_CODE.UP_ARROW) {
-            this.selectedUser = this.allUsers[--this.selectedIndex];
-        } else
-        if (event.keyCode === KEY_CODE.DOWN_ARROW) {
-            this.selectedUser = this.allUsers[++this.selectedIndex];
-        }
-    }
-
-    onSelect(user: AllUsers, i: number): void {
-        this.selectedUser = user;
-        this.selectedIndex = i;
-    }*/
 
     setKey(tableHeader: string): void {
         this.counter === 2 ? this.counter = 0 : this.counter++;

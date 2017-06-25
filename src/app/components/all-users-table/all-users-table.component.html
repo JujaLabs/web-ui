@@ -15,8 +15,6 @@
                 </thead>
                 <tbody  *ngIf="isViewTable == true">
                 <tr *ngFor="let user of allUsers | sorting: key : counter; let i = index"
-                    [class.selected]="user === selectedUser"
-                    (click)="onSelect(user, i)"
                     [style.background-color]="setBackgroundColor(user.point)"
                     [style.color]="setColor(user.point)">
                     <td>{{i+1}}</td>
