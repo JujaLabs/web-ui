@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
@@ -9,11 +9,6 @@ import { UserActivity } from '../../model/userActivity';
 import { UserService } from '../../service/user.service';
 import { User } from '../../model/user';
 import { AllUsers } from '../../model/allUsers';
-
-export enum KEY_CODE {
-    UP_ARROW = 38,
-    DOWN_ARROW = 40
-}
 
 @Component({
     selector: 'app-all-users-table',
@@ -28,8 +23,6 @@ export class AllUsersTableComponent implements OnInit {
     allUsers: AllUsers[];
     key: string;
     counter: number;
-    selectedUser: UserActivity;
-    selectedIndex: number;
     isViewTable: boolean;
 
     constructor(
@@ -85,24 +78,9 @@ export class AllUsersTableComponent implements OnInit {
         this.isViewTable = true;
     }
 
-    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent): void {
-        if (event.keyCode === KEY_CODE.UP_ARROW) {
-            this.selectedUser = this.allUsers[--this.selectedIndex];
-        } else
-        if (event.keyCode === KEY_CODE.DOWN_ARROW) {
-            this.selectedUser = this.allUsers[++this.selectedIndex];
-        }
-    }
-
-    onSelect(user: AllUsers, i: number): void {
-        this.selectedUser = user;
-        this.selectedIndex = i;
-    }
-
     setKey(tableHeader: string): void {
         this.counter === 2 ? this.counter = 0 : this.counter++;
-        tableHeader === 'name' ? this.key = 'name' : this.key = 'point';
+        this.key = tableHeader;
     }
 
     gotoDetail(uuid: string): void {
@@ -122,25 +100,25 @@ export class AllUsersTableComponent implements OnInit {
       } else if (point >= 120 && point < 150) {
         return '#BC8F8F';
       } else if (point >= 150 && point < 180) {
-        return '#8B008B';
+        return '#EE82EE';
       } else if (point >= 180 && point < 210) {
-        return '#FFFF00';
+        return '#FFFFE0';
       } else if (point >= 210 && point < 240) {
-        return '#FFA500';
+        return '#F0E68C';
       } else if (point >= 240 && point < 270) {
-        return '#FF0000';
+        return '#FF6347';
       } else if (point >= 270 && point < 300) {
-        return '#00FF00';
+        return '#9ACD32';
       } else if (point >= 300 && point < 330) {
-        return '#00FFFF';
+        return '#7FFFD4';
       } else if (point >= 330 && point < 360) {
-        return '#0000FF';
+        return '#6A5ACD';
       } else if (point >= 360 && point < 390) {
         return '#9932CC';
       } else if (point >= 390 && point < 420) {
-        return '#000000';
+        return '#808080';
       } else if (point >= 420) {
-        return '#000000';
+        return '#808080';
       }
     }
     setColor(point: number): string {
