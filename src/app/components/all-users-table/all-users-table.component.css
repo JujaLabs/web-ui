@@ -1,8 +1,24 @@
-.selected {
-    background-color: #CFD8DC !important;
-    color: white;
-}
 .btnDetails {
     width: 60px;
     text-align: center;
+}
+table {
+  background-color: white;
+}
+.up {
+  position: absolute;
+  bottom: 13px;
+  right: 5px;
+  z-index: 0;
+  color: darkgrey;
+}
+.down {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  z-index: 1;
+  color: darkgrey;
+}
+.sortTh {
+  position: relative;
 }

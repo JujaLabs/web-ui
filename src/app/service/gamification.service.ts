@@ -9,18 +9,15 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class GamificationService {
-
-  // private url: string = 'http://gamification.juja.com.ua/user/pointSum';
-  private url = 'api/userActivity';
-  private urlUserDetails = 'http://gamification.juja.com.ua/user/achieveDetails';
-
+  private url = '/api/gamification/user/pointSum';
+  private urlUserDetails = '/api/gamification/user/achieveDetails';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
 
   private extractData(res: Response): Array<any> {
     const body = res.json();
-    return body.data || {};
+    return body || {};
   }
 
   getPointSumForAllUsers(): Observable<any> {
@@ -34,7 +31,7 @@ export class GamificationService {
     const request = '{\"toIds\":[\"' + uuid + '\"]}';
     const options = new RequestOptions({headers: this.headers});
     return (this.http.post(this.urlUserDetails, request, options)
-        .map(res => res.json() || {}))
-        .catch((error: any) => {return Observable.throw(error); });
+        .map(this.extractData)
+        .catch((error: any) => {return Observable.throw(error); }));
   }
 }

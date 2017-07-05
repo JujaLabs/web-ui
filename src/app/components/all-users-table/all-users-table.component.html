@@ -6,23 +6,25 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th (click)="setKey('name')">Name</th>
-                    <th>Slack</th>
+                    <th class="sortTh" (click)="setKey('name')">Name <span class="up">&#9206;</span><span class="down">&#9207;</span></th>
+                    <th class="sortTh" (click)="setKey('slack')">Slack <span class="up">&#9206;</span><span class="down">&#9207;</span></th>
                     <th>Skype</th>
-                    <th (click)="setKey('point')">Point</th>
+                    <th class="sortTh" (click)="setKey('point')">Point <span class="up">&#9206;</span><span class="down">&#9207;</span></th>
+                    <th></th>
                 </tr>
                 </thead>
-                <tbody  *ngIf="viewTable == true">
+                <tbody  *ngIf="isViewTable == true">
                 <tr *ngFor="let user of allUsers | sorting: key : counter; let i = index"
-                    [class.selected]="user === selectedUser"
-                    (click)="onSelect(user, i)">
+                    [style.background-color]="setBackgroundColor(user.point)"
+                    [style.color]="setColor(user.point)">
                     <td>{{i+1}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.slack}}</td>
                     <td>{{user.skype}}</td>
                     <td>{{user.point}}</td>
                     <td class="btnDetails">
-                        <button class="btn btn-default" (click)="gotoDetail(user.uuid)">btnDetails</button>
+                        <button class="btn btn-default" (click)="gotoDetail(user.uuid)"
+                                [disabled]="user.point === 0">btnDetails</button>
                     </td>
                 </tr>
                 </tbody>

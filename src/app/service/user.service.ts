@@ -9,19 +9,15 @@ import {User} from '../model/user';
 
 @Injectable()
 export class UserService {
-
-
-    // TODO Replace with real url
-    private urlAllUsers = 'api/users';
-    // /users/nameByUuid"
-    private urlNameByUuid = 'api/nameByUuid';
+    private urlAllUsers = '/api/users/users';
+    private urlNameByUuid = '/api/users/users/nameByUuid';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
 
     private extractData(res: Response): Array<any> {
         const body = res.json();
-        return body.data || {};
+        return body || {};
     }
 
     getAllUsers(): Observable<any> {
@@ -31,17 +27,16 @@ export class UserService {
             .catch((error: any) => {return Observable.throw(error); });
     }
 
-    getNameByUuid(uuids: Array<string>): Observable<User[]> {
+    getNameByUuid(uuids: Set<string>): Observable<User[]> {
         const options = new RequestOptions({headers: this.headers});
-        // TODO Replace for real user-microservice
-        // let request = "{\"toIds\":[";
-        // uuids.forEach(uuid => (
-        //     request = request + "\"" + uuid + "\","
-        // ));
-        // request = (request + "]}").replace(",]","]");
-        // return this.http.post(this.urlNameByUuid, request, options)
-        return this.http.get(this.urlNameByUuid, options)
+        let request = '{"uuid":[';
+        uuids.forEach(uuid => (
+            request = request + '"' + uuid + '",'
+        ));
+        request = (request + ']}').replace(',]', ']');
+        return this.http.post(this.urlNameByUuid, request, options)
             .map(this.extractData)
             .catch((error: any) => {return Observable.throw(error); });
     }
 }
+

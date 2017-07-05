@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app.router';
 
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDataService } from './service/mock-data.service';
+/*import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MockDataService } from './service/mock-data.service';*/
 
 
 import { AppComponent } from './app.component';
@@ -18,6 +18,8 @@ import {AllUsersTableComponent} from './components/all-users-table/all-users-tab
 import {GamificationService} from './service/gamification.service';
 import {UserService} from './service/user.service';
 import {UserDetailsTableComponent} from './components/user-details-table/user-details-table.component';
+import { ScrollDirective } from './directives/scroll.directive';
+import { GoTopComponent } from './components/go-to-top/go-to-top.component';
 
 @NgModule({
   imports: [
@@ -25,16 +27,18 @@ import {UserDetailsTableComponent} from './components/user-details-table/user-de
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(MockDataService, {
+/*    InMemoryWebApiModule.forRoot(MockDataService, {
       passThruUnknownUrl: true
-    })
+    })*/
   ],
   declarations: [
     AppComponent,
     HeaderComponent,
     SortingPipe,
     AllUsersTableComponent,
-    UserDetailsTableComponent
+    UserDetailsTableComponent,
+    ScrollDirective,
+    GoTopComponent
   ],
   bootstrap: [
     AppComponent
