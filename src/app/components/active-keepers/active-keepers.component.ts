@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 import { KeepersService } from '../../service/keepers.service';
+import { UserService } from '../../service/user.service';
 import { ActiveKeepers } from '../../model/activeKeepers';
+import {User} from '../../model/user';
+import { KeepersDetails } from '../../model/keepersDetails';
 
 @Component({
   selector: 'active-keepers',
@@ -9,15 +13,21 @@ import { ActiveKeepers } from '../../model/activeKeepers';
   styleUrls: ['./active-keepers.component.css']
 })
 export class ActiveKeepersComponent implements OnInit{
+  title: string;
   activeKeepers: ActiveKeepers[];
   isLoaded: boolean;
+  users: User[];
+  keepersDetails: KeepersDetails[];
 
   constructor(
-    private keepersService: KeepersService
+    private keepersService: KeepersService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    this.title = 'Active Keepers';
     this.isLoaded = false;
+    this.keepersDetails = [];
     this.getActiveKeepers();
   }
 
@@ -26,14 +36,43 @@ export class ActiveKeepersComponent implements OnInit{
       .subscribe(
         (activeKeepers: ActiveKeepers[]) => {
           if (activeKeepers && activeKeepers.length) {
-            console.log(activeKeepers);
             this.activeKeepers = activeKeepers;
+            this.getNameByUuid();
           }
         },
         (error: any) => {
           console.log(error);
         }
       );
+  }
+
+  getNameByUuid(): void {
+    this.userService.getNameByUuid(this.getUuids())
+      .subscribe(
+        (users: Array<any>) => {
+          this.users = users;
+          this.compoundData();
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+  }
+
+  getUuids(): Set<string>  {
+    const uuids = new Set();
+    this.activeKeepers.forEach(keeper => uuids.add(keeper.uuid.toString()));
+    return uuids;
+  }
+
+  compoundData(): void {
+    const merged: Array<any> = _(this.users) // start sequence
+      .keyBy('uuid') // create a dictionary of the 1st array
+      .merge(_.keyBy(this.activeKeepers, 'uuid')) // create a dictionary of the 2nd array, and merge it to the 1st
+      .values() // turn the combined dictionary to array
+      .value();
+
+    merged.forEach(element => {this.keepersDetails.push(element)});
     this.isLoaded = true;
   }
 }
