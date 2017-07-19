@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app.router';
 
 
 // Imports for loading & configuring the in-memory web api
-/*import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDataService } from './service/mock-data.service';*/
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MockDataService } from './service/mock-data.service';
 
 
 import { AppComponent } from './app.component';
@@ -29,9 +29,9 @@ import { KeepersService } from './service/keepers.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-/*    InMemoryWebApiModule.forRoot(MockDataService, {
+    InMemoryWebApiModule.forRoot(MockDataService, {
       passThruUnknownUrl: true
-    })*/
+    })
   ],
   declarations: [
     AppComponent,
