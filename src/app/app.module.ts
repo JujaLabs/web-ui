@@ -20,6 +20,7 @@ import {UserService} from './service/user.service';
 import {UserDetailsTableComponent} from './components/user-details-table/user-details-table.component';
 import { ScrollDirective } from './directives/scroll.directive';
 import { GoTopComponent } from './components/go-to-top/go-to-top.component';
+import { ActiveKeepersComponent } from './components/active-keepers/active-keepers.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { GoTopComponent } from './components/go-to-top/go-to-top.component';
     AllUsersTableComponent,
     UserDetailsTableComponent,
     ScrollDirective,
-    GoTopComponent
+    GoTopComponent,
+    ActiveKeepersComponent
   ],
   bootstrap: [
     AppComponent

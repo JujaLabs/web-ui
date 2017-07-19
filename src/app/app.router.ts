@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AllUsersTableComponent } from './components/all-users-table/all-users-table.component';
-import {UserDetailsTableComponent} from './components/user-details-table/user-details-table.component';
+import { UserDetailsTableComponent } from './components/user-details-table/user-details-table.component';
+import { ActiveKeepersComponent } from './components/active-keepers/active-keepers.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'user-details-table/:uuid',
         component: UserDetailsTableComponent
+    },
+    {
+        path: 'active-keepers',
+        component: ActiveKeepersComponent
     },
     {
         path: '',
