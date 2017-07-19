@@ -8,18 +8,20 @@ import { AppRoutingModule } from './app.router';
 
 
 // Imports for loading & configuring the in-memory web api
-/*import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDataService } from './service/mock-data.service';*/
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MockDataService } from './service/mock-data.service';
 
 
 import { AppComponent } from './app.component';
-import {HeaderComponent} from './components/header/header.component';
-import {AllUsersTableComponent} from './components/all-users-table/all-users-table.component';
-import {GamificationService} from './service/gamification.service';
-import {UserService} from './service/user.service';
-import {UserDetailsTableComponent} from './components/user-details-table/user-details-table.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AllUsersTableComponent } from './components/all-users-table/all-users-table.component';
+import { GamificationService } from './service/gamification.service';
+import { UserService } from './service/user.service';
+import { UserDetailsTableComponent } from './components/user-details-table/user-details-table.component';
 import { ScrollDirective } from './directives/scroll.directive';
 import { GoTopComponent } from './components/go-to-top/go-to-top.component';
+import { ActiveKeepersComponent } from './components/active-keepers/active-keepers.component';
+import { KeepersService } from './service/keepers.service';
 
 @NgModule({
   imports: [
@@ -27,9 +29,9 @@ import { GoTopComponent } from './components/go-to-top/go-to-top.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-/*    InMemoryWebApiModule.forRoot(MockDataService, {
+    InMemoryWebApiModule.forRoot(MockDataService, {
       passThruUnknownUrl: true
-    })*/
+    })
   ],
   declarations: [
     AppComponent,
@@ -38,14 +40,16 @@ import { GoTopComponent } from './components/go-to-top/go-to-top.component';
     AllUsersTableComponent,
     UserDetailsTableComponent,
     ScrollDirective,
-    GoTopComponent
+    GoTopComponent,
+    ActiveKeepersComponent
   ],
   bootstrap: [
     AppComponent
   ],
   providers: [
     GamificationService,
-    UserService
+    UserService,
+    KeepersService
   ]
 })
 

@@ -9,8 +9,8 @@ import {User} from '../model/user';
 
 @Injectable()
 export class UserService {
-    private urlAllUsers = '/api/users/users';
-    private urlNameByUuid = '/api/users/users/nameByUuid';
+    private urlAllUsers = 'http://progress.juja.com.ua/api/users/users';
+    private urlNameByUuid = 'http://progress.juja.com.ua/api/users/users/nameByUuid';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
