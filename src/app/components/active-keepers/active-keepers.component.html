@@ -14,7 +14,7 @@
         <tbody *ngIf="isLoaded == true">
         <tr *ngFor="let keeper of keepersDetails; let i = index">
           <td>{{i+1}}</td>
-          <td>{{keeper.name}}</td>
+          <td (click)="gotoDetail(keeper.uuid)">{{keeper.name}}</td>
           <td>{{keeper.slack}}</td>
           <td>{{keeper.directions}}</td>
         </tr>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
 
 import { KeepersService } from '../../service/keepers.service';
@@ -21,7 +22,8 @@ export class ActiveKeepersComponent implements OnInit{
 
   constructor(
     private keepersService: KeepersService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -74,5 +76,9 @@ export class ActiveKeepersComponent implements OnInit{
 
     merged.forEach(element => {this.keepersDetails.push(element)});
     this.isLoaded = true;
+  }
+
+  gotoDetail(uuid: string): void {
+    this.router.navigate(['/user-details-table', uuid]);
   }
 }
