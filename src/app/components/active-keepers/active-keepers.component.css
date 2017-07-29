@@ -1,0 +1,7 @@
+table {
+  background-color: white;
+}
+.name:hover {
+  color: gray;
+  text-decoration: underline;
+}
