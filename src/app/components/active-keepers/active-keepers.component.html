@@ -7,16 +7,18 @@
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Slack</th>
           <th>Directions</th>
+          <th>Slack</th>
+          <th>Skype</th>
         </tr>
         </thead>
         <tbody *ngIf="isLoaded == true">
         <tr *ngFor="let keeper of keepersDetails; let i = index">
           <td>{{i+1}}</td>
-          <td (click)="gotoDetail(keeper.uuid)">{{keeper.name}}</td>
-          <td>{{keeper.slack}}</td>
+          <td class="name" (click)="gotoDetail(keeper.uuid)">{{keeper.name}}</td>
           <td>{{keeper.directions}}</td>
+          <td>{{keeper.slack}}</td>
+          <td>{{keeper.skype}}</td>
         </tr>
         </tbody>
       </table>
