@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import { KeepersService } from '../../service/keepers.service';
 import { UserService } from '../../service/user.service';
 import { ActiveKeepers } from '../../model/activeKeepers';
-import {User} from '../../model/user';
+import { User } from '../../model/user';
 import { KeepersDetails } from '../../model/keepersDetails';
 
 @Component({
