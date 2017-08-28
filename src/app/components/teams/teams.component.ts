@@ -29,7 +29,6 @@ export class TeamsComponent implements OnInit{
         (teams: Team[]) => {
           if (teams && teams.length) {
             this.teams = teams;
-            console.log(this.teams);
           }
         },
         (error: any) => {

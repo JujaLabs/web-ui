@@ -6,6 +6,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import { Team } from '../model/team';
+
 @Injectable()
 export class TeamsService {
   /*private url = 'http://progress.juja.com.ua/api/teams';*/
@@ -14,9 +16,9 @@ export class TeamsService {
 
   constructor(private http: Http) { }
 
-  private extractData(res: Response): Array<any> {
+  private extractData(res: Response): Team[] {
     const body = res.json();
-    return body || {};
+    return body.data || {};
   }
 
   getTeams(): Observable<any> {
