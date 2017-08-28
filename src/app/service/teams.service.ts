@@ -8,7 +8,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class TeamsService {
-  private url = 'http://progress.juja.com.ua/api/teams';
+  /*private url = 'http://progress.juja.com.ua/api/teams';*/
+  private url: string = 'api/teams';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }

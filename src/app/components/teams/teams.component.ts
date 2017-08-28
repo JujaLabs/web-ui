@@ -5,9 +5,9 @@ import { TeamsService } from '../../service/teams.service';
 import { Team } from '../../model/team';
 
 @Component({
-  selector: 'active-keepers',
-  templateUrl: './active-keepers.component.html',
-  styleUrls: ['./active-keepers.component.css']
+  selector: 'teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit{
   title: string;
@@ -29,6 +29,7 @@ export class TeamsComponent implements OnInit{
         (teams: Team[]) => {
           if (teams && teams.length) {
             this.teams = teams;
+            console.log(this.teams);
           }
         },
         (error: any) => {
