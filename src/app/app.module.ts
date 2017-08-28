@@ -22,6 +22,7 @@ import { ScrollDirective } from './directives/scroll.directive';
 import { GoTopComponent } from './components/go-to-top/go-to-top.component';
 import { ActiveKeepersComponent } from './components/active-keepers/active-keepers.component';
 import { KeepersService } from './service/keepers.service';
+import { TeamsService } from './service/teams.service';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { KeepersService } from './service/keepers.service';
   providers: [
     GamificationService,
     UserService,
-    KeepersService
+    KeepersService,
+    TeamsService
   ]
 })
 
