@@ -1,15 +1,13 @@
 <div class="main-content">
   <div class="container-fluid" *ngIf="isLoaded === true">
     <h1 class="text-center">{{title}}</h1>
-    <div class="col-md-3" *ngFor="let usersTeam of usersTeams">
+    <div class="col-md-2" *ngFor="let usersTeam of usersTeams">
         <div class="content">
-          <p>Activated Date: {{usersTeam.activateDate}}</p>
-          <p>Deactivated Date: {{usersTeam.deactivateDate}}</p>
-          <div >
-            <div *ngFor="let user of usersTeam.users">
-              <p>{{user.name}}</p>
+          <p>Activated Date: {{usersTeam.activateDate | date:"dd/MM/yyyy"}}</p>
+          <p>Deactivated Date: {{usersTeam.deactivateDate | date:"dd/MM/yyyy"}}</p>
+            <div class="list-group" *ngFor="let user of usersTeam.users">
+              <a href="#" class="list-group-item" >{{user.name}}</a>
             </div>
-          </div>
         </div>
     </div>
   </div>
