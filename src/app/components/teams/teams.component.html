@@ -5,9 +5,9 @@
         <div class="content">
           <p>Activated Date: {{usersTeam.activateDate | date:"dd/MM/yyyy"}}</p>
           <p>Deactivated Date: {{usersTeam.deactivateDate | date:"dd/MM/yyyy"}}</p>
-            <div class="list-group" *ngFor="let user of usersTeam.users">
-              <a href="#" class="list-group-item" >{{user.name}}</a>
-            </div>
+            <ul class="list-group" *ngFor="let user of usersTeam.users">
+              <li class="list-group-item" (click)="goToDetail(user.uuid)" >{{user.name}}</li>
+            </ul>
         </div>
     </div>
   </div>

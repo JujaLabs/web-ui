@@ -68,4 +68,8 @@ export class TeamsComponent implements OnInit{
     team.members.forEach(member => uuids.add(member));
     return uuids;
   }
+
+  goToDetail(uuid: string): void {
+    this.router.navigate(['/user-details-table', uuid]);
+  }
 }
