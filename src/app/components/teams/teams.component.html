@@ -1,0 +1,14 @@
+<div class="main-content">
+  <div class="container-fluid" *ngIf="isLoaded === true">
+    <h1 class="text-center">{{title}}</h1>
+    <div class="col-md-2" *ngFor="let usersTeam of usersTeams">
+        <div class="content">
+          <p>Activated Date: {{usersTeam.activateDate | date:"dd/MM/yyyy"}}</p>
+          <p>Deactivated Date: {{usersTeam.deactivateDate | date:"dd/MM/yyyy"}}</p>
+            <ul class="list-group" *ngFor="let user of usersTeam.users">
+              <li class="list-group-item" (click)="goToDetail(user.uuid)" >{{user.name}}</li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</div>
