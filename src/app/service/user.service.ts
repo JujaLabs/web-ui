@@ -9,8 +9,8 @@ import {User} from '../model/user';
 
 @Injectable()
 export class UserService {
-    private urlAllUsers = 'http://progress.juja.com.ua/api/users/users';
-    private urlNameByUuid = 'http://progress.juja.com.ua/api/users/users/nameByUuid';
+    private urlAllUsers = '/api/v1/users';
+    private urlNameByUuid = '/api/v1/users/usersByUuids';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
@@ -29,7 +29,7 @@ export class UserService {
 
     getNameByUuid(uuids: Set<string>): Observable<User[]> {
         const options = new RequestOptions({headers: this.headers});
-        let request = '{"uuid":[';
+        let request = '{"uuids":[';
         uuids.forEach(uuid => (
             request = request + '"' + uuid + '",'
         ));

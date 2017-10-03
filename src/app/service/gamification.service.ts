@@ -9,8 +9,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class GamificationService {
-  private url = 'http://progress.juja.com.ua/api/gamification/user/pointSum';
-  private urlUserDetails = 'http://progress.juja.com.ua/api/gamification/user/achieveDetails';
+  private url = '/api/v1/gamification/users/pointSum';
+  private urlUserDetails = '/api/v1/gamification/users/achievementDetails';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
