@@ -10,7 +10,7 @@ import { Team } from '../model/team';
 
 @Injectable()
 export class TeamsService {
-  private url: string = '/api/v1/teams';
+  private url = '/api/v1/teams';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }

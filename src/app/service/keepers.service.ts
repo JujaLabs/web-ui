@@ -10,7 +10,7 @@ import { ActiveKeepers } from '../model/activeKeepers';
 
 @Injectable()
 export class KeepersService {
-  private url: string = '/api/v1/keepers';
+  private url = '/api/v1/keepers';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
