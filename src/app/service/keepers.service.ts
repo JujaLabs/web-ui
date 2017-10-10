@@ -17,7 +17,7 @@ export class KeepersService {
 
   private extractData(res: Response): ActiveKeepers[] {
     const body = res.json();
-    return body.data || {};
+    return body || {};
   }
 
   getActiveKeepers(): Observable<any> {
