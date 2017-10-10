@@ -5,13 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { SortingPipe } from './pipes/sorting.pipe';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.router';
-
-
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDataService } from './service/mock-data.service';
-
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AllUsersTableComponent } from './components/all-users-table/all-users-table.component';
@@ -31,9 +24,6 @@ import { TeamsComponent } from './components/teams/teams.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(MockDataService, {
-      passThruUnknownUrl: true
-    })
   ],
   declarations: [
     AppComponent,
