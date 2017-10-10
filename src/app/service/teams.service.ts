@@ -17,7 +17,7 @@ export class TeamsService {
 
   private extractData(res: Response): Team[] {
     const body = res.json();
-    return body.data || {};
+    return body || {};
   }
 
   getTeams(): Observable<any> {
