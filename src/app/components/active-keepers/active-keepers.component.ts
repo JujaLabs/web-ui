@@ -13,7 +13,7 @@ import { KeepersDetails } from '../../model/keepersDetails';
   templateUrl: './active-keepers.component.html',
   styleUrls: ['./active-keepers.component.css']
 })
-export class ActiveKeepersComponent implements OnInit{
+export class ActiveKeepersComponent implements OnInit {
   title: string;
   activeKeepers: ActiveKeepers[];
   isLoaded: boolean;
@@ -74,7 +74,7 @@ export class ActiveKeepersComponent implements OnInit{
       .values() // turn the combined dictionary to array
       .value();
 
-    merged.forEach(element => {this.keepersDetails.push(element)});
+    merged.forEach(element => {this.keepersDetails.push(element); });
     this.isLoaded = true;
   }
 

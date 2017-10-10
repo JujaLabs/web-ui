@@ -5,14 +5,14 @@ import { TeamsService } from '../../service/teams.service';
 import { UserService } from '../../service/user.service';
 import { Team } from '../../model/team';
 import { User } from '../../model/user';
-import { UsersTeam } from "../../model/usersTeam";
+import { UsersTeam } from '../../model/usersTeam';
 
 @Component({
   selector: 'teams',
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.css']
 })
-export class TeamsComponent implements OnInit{
+export class TeamsComponent implements OnInit {
   title: string;
   teams: Team[];
   usersTeams: Set<UsersTeam>;
