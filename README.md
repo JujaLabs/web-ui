@@ -10,6 +10,10 @@ Verify that you are running at least node v4.x.x and npm 3.x.x by running node -
 We recommend nvm for managing multiple versions of node and npm.
 
 #### For building and launching application
+
  1. clone this repository
  2. run ``npm install``
- 3. run ``npm start``
+ 3. run ``npm start`` || ``ng serve``
+ 4. after check your code ``ng lint`` and fix mistake ``ng lint --fix ``
+
+ [Detail wiki  angular-cli](https://github.com/angular/angular-cli/wiki)

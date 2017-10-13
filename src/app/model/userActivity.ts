@@ -1,4 +1,4 @@
-export class Person {
+export class UserActivity {
   to: string;
   point: number;
 }

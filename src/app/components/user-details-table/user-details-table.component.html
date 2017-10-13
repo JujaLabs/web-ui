@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">{{title}}</h1>
+          <h3>{{user.name}} <span>PointSum: {{pointSum}}</span></h3>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>From</th>
+                        <th>Description</th>
+                        <th>Count</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="isViewTable == true">
+                    <tr *ngFor="let achievement of userDetails.details.reverse(); let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{achievement.from}}</td>
+                        <td>{{achievement.description}}</td>
+                        <td>{{achievement.point}}</td>
+                        <td>{{achievement.sendDate}}</td>
+                        <td>{{achievement.type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-default" (click)="goBack()">Back</button>
+        </div>
+    </div>
+</div>
