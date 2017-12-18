@@ -17,6 +17,7 @@ import { ActiveKeepersComponent } from './components/gamification/active-keepers
 import { KeepersService } from './service/keepers.service';
 import { TeamsService } from './service/teams.service';
 import { TeamsComponent } from './components/gamification/teams/teams.component';
+import { AllChannelsTableComponent } from './components/slack-archive/all-channels-table/all-channels-table.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { TeamsComponent } from './components/gamification/teams/teams.component'
     ScrollDirective,
     GoTopComponent,
     ActiveKeepersComponent,
-    TeamsComponent
+    TeamsComponent,
+    AllChannelsTableComponent
   ],
   bootstrap: [
     AppComponent

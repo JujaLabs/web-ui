@@ -5,6 +5,7 @@ import { AllUsersTableComponent } from './components/gamification/all-users-tabl
 import { UserDetailsTableComponent } from './components/gamification/user-details-table/user-details-table.component';
 import { ActiveKeepersComponent } from './components/gamification/active-keepers/active-keepers.component';
 import { TeamsComponent } from './components/gamification/teams/teams.component';
+import { AllChannelsTableComponent } from './components/slack-archive/all-channels-table/all-channels-table.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'teams',
         component: TeamsComponent
+    },
+    {
+        path: 'all-channels-table',
+        component: AllChannelsTableComponent
     },
     {
         path: '',
