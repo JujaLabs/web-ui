@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AllUsersTableComponent } from './components/all-users-table/all-users-table.component';
-import { UserDetailsTableComponent } from './components/user-details-table/user-details-table.component';
-import { ActiveKeepersComponent } from './components/active-keepers/active-keepers.component';
-import { TeamsComponent } from './components/teams/teams.component';
+import { AllUsersTableComponent } from './components/gamification/all-users-table/all-users-table.component';
+import { UserDetailsTableComponent } from './components/gamification/user-details-table/user-details-table.component';
+import { ActiveKeepersComponent } from './components/gamification/active-keepers/active-keepers.component';
+import { TeamsComponent } from './components/gamification/teams/teams.component';
 
 const routes: Routes = [
     {

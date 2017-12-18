@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { Team } from '../model/team';
+import { Team } from '../model/gamification/team';
 
 @Injectable()
 export class TeamsService {

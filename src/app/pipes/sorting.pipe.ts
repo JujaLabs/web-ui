@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as _ from 'lodash';
-import {AllUsers} from '../model/allUsers';
+import {AllUsers} from '../model/gamification/allUsers';
 
 @Pipe( {
   name: 'sorting'

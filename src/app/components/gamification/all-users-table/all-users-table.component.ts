@@ -4,11 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import * as _ from 'lodash';
 
-import { GamificationService} from '../../service/gamification.service';
-import { UserActivity } from '../../model/userActivity';
-import { UserService } from '../../service/user.service';
-import { User } from '../../model/user';
-import { AllUsers } from '../../model/allUsers';
+import { GamificationService} from '../../../service/gamification.service';
+import { UserActivity } from '../../../model/gamification/userActivity';
+import { UserService } from '../../../service/user.service';
+import { User } from '../../../model/user';
+import { AllUsers } from '../../../model/gamification/allUsers';
 
 @Component({
     selector: 'app-all-users-table',
