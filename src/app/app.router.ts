@@ -6,6 +6,7 @@ import { UserDetailsTableComponent } from './components/gamification/user-detail
 import { ActiveKeepersComponent } from './components/gamification/active-keepers/active-keepers.component';
 import { TeamsComponent } from './components/gamification/teams/teams.component';
 import { AllChannelsTableComponent } from './components/slack-archive/all-channels-table/all-channels-table.component';
+import { ChannelMessagesTableComponent } from "./components/slack-archive/channel-messages-table/channel-messages-table.component";
 
 const routes: Routes = [
     {
@@ -29,6 +30,10 @@ const routes: Routes = [
         component: AllChannelsTableComponent
     },
     {
+         path: 'channel-messages-table/:id',
+         component: ChannelMessagesTableComponent
+    },
+    {
         path: '',
         redirectTo: '/all-users-table',
         pathMatch: 'full'
@@ -39,4 +44,5 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
 })
+
 export class AppRoutingModule { }

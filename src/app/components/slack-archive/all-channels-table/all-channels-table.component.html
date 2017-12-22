@@ -1,36 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">{{title}}</h1>
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
+  <div class="col-md-12">
+    <h1 class="text-center">{{title}}</h1>
+    <span *ngIf="isLoaded == false">Loading ...</span>
+    <table class="table table-bordered table-hover table-striped" *ngIf="isLoaded == true">
+      <thead>
         <tr>
           <th>#</th>
           <th>Name</th>
-          <!--<th>#</th>-->
-          <!--<th class="sortTh" (click)="setKey('name')">Name <span class="up">&#9206;</span><span class="down">&#9207;</span></th>-->
-          <!--<th class="sortTh" (click)="setKey('slack')">Slack <span class="up">&#9206;</span><span class="down">&#9207;</span></th>-->
-          <!--<th>Skype</th>-->
-          <!--<th class="sortTh" (click)="setKey('point')">Point <span class="up">&#9206;</span><span class="down">&#9207;</span></th>-->
-          <!--<th></th>-->
         </tr>
-        </thead>
-        <tbody  *ngIf="isViewTable == true">
+      </thead>
+      <tbody>
         <tr *ngFor="let channel of channels let i = index">
-            <!--[style.background-color]="setBackgroundColor(user.point)"-->
-            <!--[style.color]="setColor(user.point)">-->
           <td>{{i+1}}</td>
-          <td>{{channel.name}}</td>
-          <!--<td>{{user.slack}}</td>-->
-          <!--<td>{{user.skype}}</td>-->
-          <!--<td>{{user.point}}</td>-->
-          <!--<td class="btnDetails">-->
-            <!--<button class="btn btn-default" (click)="gotoDetail(user.uuid)"-->
-                    <!--[disabled]="user.point === 0">Details</button>-->
-          <!--</td>-->
+          <td class="pointer" (click)="viewChannelMessages(channel.id)">{{channel.name}}</td>
         </tr>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
     </div>
-  </div>
 </div>
