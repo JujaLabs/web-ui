@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AllUsersTableComponent } from './components/gamification/all-users-table/all-users-table.component';
 import { UserDetailsTableComponent } from './components/gamification/user-details-table/user-details-table.component';
-import { ActiveKeepersComponent } from './components/gamification/active-keepers/active-keepers.component';
-import { TeamsComponent } from './components/gamification/teams/teams.component';
+import { ActiveKeepersComponent } from './components/keepers/active-keepers.component';
+import { TeamsComponent } from './components/teams/teams.component';
 import { AllChannelsTableComponent } from './components/slack-archive/all-channels-table/all-channels-table.component';
 import { ChannelMessagesTableComponent } from "./components/slack-archive/channel-messages-table/channel-messages-table.component";
 

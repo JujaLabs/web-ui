@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TeamsService } from '../../../service/teams.service';
-import { UserService } from '../../../service/user.service';
-import { Team } from '../../../model/gamification/team';
-import { User } from '../../../model/user';
-import { UsersTeam } from '../../../model/gamification/usersTeam';
+import { TeamsService } from '../../service/teams.service';
+import { UserService } from '../../service/users.service';
+import { Team } from '../../model/teams/team';
+import { User } from '../../model/users/user';
+import { UsersTeam } from '../../model/teams/usersTeam';
 
 @Component({
   selector: 'teams',

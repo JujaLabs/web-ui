@@ -6,8 +6,8 @@ import * as _ from 'lodash';
 
 import { GamificationService} from '../../../service/gamification.service';
 import { UserActivity } from '../../../model/gamification/userActivity';
-import { UserService } from '../../../service/user.service';
-import { User } from '../../../model/user';
+import { UserService } from '../../../service/users.service';
+import { User } from '../../../model/users/user';
 import { AllUsers } from '../../../model/gamification/allUsers';
 
 @Component({

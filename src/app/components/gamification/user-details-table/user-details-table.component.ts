@@ -3,11 +3,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
-import {UserService} from '../../../service/user.service';
+import {UserService} from '../../../service/users.service';
 import {GamificationService} from '../../../service/gamification.service';
 
 import {UserDetails} from '../../../model/gamification/userDetails';
-import {User} from '../../../model/user';
+import {User} from '../../../model/users/user';
 
 @Component({
     selector: 'app-user-details-table',

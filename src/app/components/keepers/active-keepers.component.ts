@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 
-import { KeepersService } from '../../../service/keepers.service';
-import { UserService } from '../../../service/user.service';
-import { ActiveKeepers } from '../../../model/gamification/activeKeepers';
-import { User } from '../../../model/user';
-import { KeepersDetails } from '../../../model/gamification/keepersDetails';
+import { KeepersService } from '../../service/keepers.service';
+import { UserService } from '../../service/users.service';
+import { ActiveKeepers } from '../../model/keepers/activeKeepers';
+import { User } from '../../model/users/user';
+import { KeepersDetails } from '../../model/keepers/keepersDetails';
 
 @Component({
   selector: 'active-keepers',

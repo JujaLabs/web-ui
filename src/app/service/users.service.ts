@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import {User} from '../model/user';
+import {User} from '../model/users/user';
 
 @Injectable()
 export class UserService {
