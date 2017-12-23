@@ -11,7 +11,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class ScrollDirective {
 
-  constructor(@Inject(DOCUMENT) private document: Document,
+  constructor(@Inject(DOCUMENT) private document: any,
               private element: ElementRef) {
   }
 

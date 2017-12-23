@@ -31,7 +31,6 @@ export class AllUsersTableComponent implements OnInit {
         private router: Router
     ) { }
 
-
     ngOnInit(): void {
         this.title = 'All Users Table';
         this.userActivity = [];
