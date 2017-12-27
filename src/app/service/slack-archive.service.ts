@@ -1,28 +1,28 @@
-import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions, Response} from '@angular/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { Team } from '../model/teams/team';
+import {SlackChannel} from "../model/slack-archive/slack-channel";
 
 @Injectable()
-export class TeamsService {
-  private url = '/api/v1/teams';
+export class SlackArchiveService {
+  private urlAllChannels = '/api/v1/slack-archive/channels';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
 
-  private extractData(res: Response): Team[] {
+  private extractData(res: Response): Array<any> {
     const body = res.json();
     return body || {};
   }
 
-  getTeams(): Observable<any> {
+  getAllChannels(): Observable<SlackChannel[]> {
     const options = new RequestOptions({headers: this.headers});
-    return this.http.get(this.url, options)
+    return this.http.get(this.urlAllChannels, options)
       .map(this.extractData)
       .catch((error: any) => {return Observable.throw(error); });
   }

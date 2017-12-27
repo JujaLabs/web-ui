@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1 class="text-center">{{title}}</h1>
+    <span *ngIf="isLoaded == false">Loading ...</span>
+    <table class="table table-bordered table-hover table-striped" *ngIf="isLoaded == true">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let channel of channels let i = index">
+          <td>{{i+1}}</td>
+          <td class="pointer" (click)="viewChannelMessages(channel.id)">{{channel.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+</div>

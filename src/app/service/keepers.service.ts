@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { ActiveKeepers } from '../model/activeKeepers';
+import { ActiveKeepers } from '../model/keepers/activeKeepers';
 
 @Injectable()
 export class KeepersService {
